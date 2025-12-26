@@ -1,0 +1,469 @@
+/**
+ * Portfolio Website JavaScript
+ * Features:
+ * - Smooth scrolling navigation
+ * - Mobile menu toggle
+ * - Scroll animations
+ * - Project modal popup
+ * - Form validation
+ * - Header background on scroll
+ */
+
+// ========================================
+// DOM Elements
+// ========================================
+const header = document.getElementById('header');
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
+const navLinks = document.querySelectorAll('.nav-link');
+const contactForm = document.getElementById('contact-form');
+const projectCards = document.querySelectorAll('.project-card');
+const modal = document.getElementById('project-modal');
+const modalClose = document.getElementById('modal-close');
+const modalBody = document.getElementById('modal-body');
+const currentYear = document.getElementById('current-year');
+
+// ========================================
+// Initialize
+// ========================================
+document.addEventListener('DOMContentLoaded', () => {
+    // Set current year in footer
+    if (currentYear) {
+        currentYear.textContent = new Date().getFullYear();
+    }
+    
+    // Initialize scroll animations
+    initScrollAnimations();
+    
+    // Initialize smooth scroll
+    initSmoothScroll();
+    
+    // Initialize header scroll effect
+    initHeaderScroll();
+    
+    // Initialize mobile menu
+    initMobileMenu();
+    
+    // Initialize project modals
+    initProjectModals();
+    
+    // Initialize form validation
+    initFormValidation();
+});
+
+// ========================================
+// Header Scroll Effect
+// ========================================
+/**
+ * Adds/removes 'scrolled' class to header on scroll
+ * Changes header background from transparent to solid
+ */
+function initHeaderScroll() {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+}
+
+// ========================================
+// Smooth Scroll Navigation
+// ========================================
+/**
+ * Implements smooth scrolling for navigation links
+ */
+function initSmoothScroll() {
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            const targetId = link.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                const headerHeight = header.offsetHeight;
+                const targetPosition = targetSection.offsetTop - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            }
+        });
+    });
+    
+    // Smooth scroll for "View My Work" button
+    const viewWorkBtn = document.querySelector('.btn-primary[href="#projects"]');
+    if (viewWorkBtn) {
+        viewWorkBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const projectsSection = document.querySelector('#projects');
+            if (projectsSection) {
+                const headerHeight = header.offsetHeight;
+                const targetPosition = projectsSection.offsetTop - headerHeight;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    }
+}
+
+// ========================================
+// Mobile Menu Toggle
+// ========================================
+/**
+ * Handles mobile hamburger menu toggle with slide animation
+ */
+function initMobileMenu() {
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            }
+        });
+    }
+}
+
+// ========================================
+// Scroll Animations
+// ========================================
+/**
+ * Adds scroll reveal animations to elements
+ * Elements fade in and slide up when they come into view
+ */
+function initScrollAnimations() {
+    // Select all elements that should animate on scroll
+    const revealElements = document.querySelectorAll('.about-content, .project-card, .contact-content, .section-title');
+    
+    // Create Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                // Unobserve after animation to improve performance
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1, // Trigger when 10% of element is visible
+        rootMargin: '0px 0px -50px 0px' // Trigger slightly before element enters viewport
+    });
+    
+    // Add scroll-reveal class and observe each element
+    revealElements.forEach(element => {
+        element.classList.add('scroll-reveal');
+        observer.observe(element);
+    });
+}
+
+// ========================================
+// Project Modal
+// ========================================
+/**
+ * Project data - Easy to customize with your actual projects
+ * Add more projects by adding objects to this array
+ */
+const projectsData = {
+    1: {
+        title: 'Project One',
+        description: 'A modern web application built with HTML, CSS, and JavaScript featuring interactive UI components and smooth animations. This project showcases advanced front-end development techniques and responsive design principles.',
+        technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
+        github: '#',
+        demo: '#'
+    },
+    2: {
+        title: 'Project Two',
+        description: 'Responsive web design project with modern CSS Grid and Flexbox layouts, optimized for all device sizes. Features include smooth transitions, hover effects, and a clean, minimalist design approach.',
+        technologies: ['HTML5', 'CSS3', 'Flexbox', 'CSS Grid'],
+        github: '#',
+        demo: '#'
+    },
+    3: {
+        title: 'Project Three',
+        description: 'Interactive JavaScript application with dynamic content loading and real-time user interactions. Includes form validation, modal popups, and smooth scroll animations for enhanced user experience.',
+        technologies: ['JavaScript', 'DOM Manipulation', 'Event Handling', 'AJAX'],
+        github: '#',
+        demo: '#'
+    },
+    4: {
+        title: 'Project Four',
+        description: 'Full-featured web application showcasing advanced CSS animations and JavaScript functionality for an enhanced user experience. Includes complex state management and interactive UI elements.',
+        technologies: ['HTML5', 'CSS3', 'JavaScript', 'Advanced Animations'],
+        github: '#',
+        demo: '#'
+    }
+};
+
+/**
+ * Opens project modal with project details
+ */
+function initProjectModals() {
+    projectCards.forEach(card => {
+        const viewDetailsBtn = card.querySelector('.btn-view-details');
+        const cardElement = card;
+        
+        // Add click event to "View Details" button
+        if (viewDetailsBtn) {
+            viewDetailsBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const projectId = cardElement.getAttribute('data-project');
+                openModal(projectId);
+            });
+        }
+        
+        // Add click event to entire card (optional - opens modal on card click)
+        cardElement.addEventListener('click', (e) => {
+            // Don't open modal if clicking on links
+            if (!e.target.closest('.project-link')) {
+                const projectId = cardElement.getAttribute('data-project');
+                openModal(projectId);
+            }
+        });
+    });
+    
+    // Close modal when clicking close button
+    if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+    }
+    
+    // Close modal when clicking outside modal content
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    }
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+}
+
+/**
+ * Opens the modal and displays project information
+ * @param {string} projectId - The ID of the project to display
+ */
+function openModal(projectId) {
+    const project = projectsData[projectId];
+    
+    if (!project) return;
+    
+    // Create modal content
+    modalBody.innerHTML = `
+        <h3>${project.title}</h3>
+        <p>${project.description}</p>
+        <div class="project-tech">
+            ${project.technologies.map(tech => `<span>${tech}</span>`).join('')}
+        </div>
+        <div class="project-links" style="margin-top: 1.5rem;">
+            <a href="${project.github}" class="project-link" target="_blank" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="${project.demo}" class="project-link" target="_blank" aria-label="Live Demo">
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+        </div>
+    `;
+    
+    // Show modal with animation
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+}
+
+/**
+ * Closes the modal
+ */
+function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = ''; // Restore scrolling
+}
+
+// ========================================
+// Form Validation
+// ========================================
+/**
+ * Initializes form validation with real-time error checking
+ */
+function initFormValidation() {
+    if (!contactForm) return;
+    
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
+    const nameError = document.getElementById('name-error');
+    const emailError = document.getElementById('email-error');
+    const messageError = document.getElementById('message-error');
+    
+    // Real-time validation on input
+    if (nameInput) {
+        nameInput.addEventListener('blur', () => validateName());
+        nameInput.addEventListener('input', () => clearError(nameError));
+    }
+    
+    if (emailInput) {
+        emailInput.addEventListener('blur', () => validateEmail());
+        emailInput.addEventListener('input', () => clearError(emailError));
+    }
+    
+    if (messageInput) {
+        messageInput.addEventListener('blur', () => validateMessage());
+        messageInput.addEventListener('input', () => clearError(messageError));
+    }
+    
+    // Form submission
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const isNameValid = validateName();
+        const isEmailValid = validateEmail();
+        const isMessageValid = validateMessage();
+        
+        if (isNameValid && isEmailValid && isMessageValid) {
+            // Form is valid - you can add code here to submit the form
+            // For example: send data to a server, show success message, etc.
+            
+            // Show success message (you can customize this)
+            alert('Thank you for your message! I will get back to you soon.');
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Reset labels position
+            const labels = document.querySelectorAll('.form-label');
+            labels.forEach(label => {
+                const input = document.querySelector(`#${label.getAttribute('for')}`);
+                if (input && !input.value) {
+                    label.style.top = '18px';
+                    label.style.fontSize = '1rem';
+                    label.style.color = '';
+                    label.style.backgroundColor = '';
+                }
+            });
+        } else {
+            // Scroll to first error
+            const firstError = document.querySelector('.form-error:not(:empty)');
+            if (firstError) {
+                firstError.closest('.form-group').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+    });
+    
+    /**
+     * Validates the name field
+     * @returns {boolean} True if valid, false otherwise
+     */
+    function validateName() {
+        const name = nameInput.value.trim();
+        if (!name) {
+            showError(nameError, 'Name is required');
+            return false;
+        }
+        if (name.length < 2) {
+            showError(nameError, 'Name must be at least 2 characters');
+            return false;
+        }
+        clearError(nameError);
+        return true;
+    }
+    
+    /**
+     * Validates the email field
+     * @returns {boolean} True if valid, false otherwise
+     */
+    function validateEmail() {
+        const email = emailInput.value.trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
+        if (!email) {
+            showError(emailError, 'Email is required');
+            return false;
+        }
+        if (!emailRegex.test(email)) {
+            showError(emailError, 'Please enter a valid email address');
+            return false;
+        }
+        clearError(emailError);
+        return true;
+    }
+    
+    /**
+     * Validates the message field
+     * @returns {boolean} True if valid, false otherwise
+     */
+    function validateMessage() {
+        const message = messageInput.value.trim();
+        if (!message) {
+            showError(messageError, 'Message is required');
+            return false;
+        }
+        if (message.length < 10) {
+            showError(messageError, 'Message must be at least 10 characters');
+            return false;
+        }
+        clearError(messageError);
+        return true;
+    }
+    
+    /**
+     * Displays an error message
+     * @param {HTMLElement} errorElement - The error element to show message in
+     * @param {string} message - The error message to display
+     */
+    function showError(errorElement, message) {
+        if (errorElement) {
+            errorElement.textContent = message;
+        }
+    }
+    
+    /**
+     * Clears an error message
+     * @param {HTMLElement} errorElement - The error element to clear
+     */
+    function clearError(errorElement) {
+        if (errorElement) {
+            errorElement.textContent = '';
+        }
+    }
+}
+
+// ========================================
+// Additional Utility Functions
+// ========================================
+
+/**
+ * Smooth scroll polyfill for older browsers (if needed)
+ * Modern browsers support smooth scroll natively
+ */
+function smoothScrollTo(element, offset = 0) {
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - offset;
+    
+    window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+    });
+}
+

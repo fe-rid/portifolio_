@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Alferid's Portfolio - Software Engineering Student"
+    />
+    <title>Alferid | Software Engineering Student</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- Header / Navbar -->
+    <header class="header" id="header">
+      <nav class="navbar container">
+        <!-- Logo -->
+        <div class="logo">
+          <a href="#home">Alferid</a>
+        </div>
+
+        <!-- Navigation Links -->
+        <ul class="nav-menu" id="nav-menu">
+          <li class="nav-item">
+            <a href="#home" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="#about" class="nav-link">About</a>
+          </li>
+          <li class="nav-item">
+            <a href="#projects" class="nav-link">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a href="#contact" class="nav-link">Contact</a>
+          </li>
+        </ul>
+
+        <!-- Hamburger Menu -->
+        <div class="hamburger" id="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <!-- Animated Background Shapes -->
+      <div class="hero-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+      </div>
+
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            <span class="hero-greeting"
+              >Hi, I'm Alferid <span class="wave-emoji">👋</span></span
+            >
+          </h1>
+          <p class="hero-subtitle hero-main">
+            I'm a
+            <span class="highlight">Front-End & Mobile App Developer</span>.
+          </p>
+          <p class="hero-description">
+            I create beautiful, interactive websites and user-friendly mobile
+            apps using
+            <span class="tech-highlight">HTML</span>,
+            <span class="tech-highlight">CSS</span>,
+            <span class="tech-highlight">JavaScript</span>, and
+            <span class="tech-highlight">Flutter</span>.
+          </p>
+          <p class="hero-cta">Let's build something amazing together!</p>
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="scroll-indicator">
+        <div class="mouse">
+          <div class="wheel"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section class="about" id="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+          <!-- Profile Image -->
+          <div class="about-image">
+            <div class="image-wrapper">
+              <div class="avatar-placeholder">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="image-border"></div>
+            </div>
+          </div>
+
+          <!-- About Text and Skills -->
+          <div class="about-text">
+            <p class="about-description">
+              Hi! I’m Alferid, a passionate Front-End Developer and Mobile App
+              Developer. I love building visually stunning websites and
+              user-friendly mobile apps that are both functional and engaging. I
+              specialize in HTML, CSS, JavaScript, and modern web technologies,
+              while also creating smooth, responsive Apps for multiple
+              platforms. I focus on clean code, great UI/UX, and continuously
+              learning new skills to deliver projects that people love to use.
+            </p>
+
+            <!-- Skills Section -->
+            <div class="skills">
+              <h3 class="skills-title">Skills</h3>
+              <div class="skills-container">
+                <div class="skill-badge">
+                  <i class="fab fa-html5"></i>
+                  <span>HTML5</span>
+                </div>
+                <div class="skill-badge">
+                  <i class="fab fa-css3-alt"></i>
+                  <span>CSS3</span>
+                </div>
+                <div class="skill-badge">
+                  <i class="fab fa-js"></i>
+                  <span>JavaScript</span>
+                </div>
+                <div class="skill-badge">
+                  <i class="fab fa-flutter"></i>
+                  <span>Flutter</span>
+                </div>
+                <div class="skill-badge">
+                  <i class="fas fa-code"></i>
+                  <span>Web Development</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+      <div class="container">
+        <h2 class="section-title">My Projects</h2>
+        <div class="projects-grid">
+          <!-- Project Card 1 -->
+          <div class="project-card" data-project="1">
+            <div class="project-image">
+              <div class="project-placeholder">
+                <i class="fas fa-laptop-code"></i>
+              </div>
+              <div class="project-overlay">
+                <button class="btn-view-details">View Details</button>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">Project One</h3>
+              <p class="project-description">
+                A modern web application built with HTML, CSS, and JavaScript
+                featuring interactive UI components and smooth animations.
+              </p>
+              <div class="project-links">
+                <a
+                  href="#"
+                  class="project-link"
+                  target="_blank"
+                  aria-label="GitHub"
+                >
+                  <i class="fab fa-github"></i>
+                </a>
+                <a
+                  href="#"
+                  class="project-link"
+                  target="_blank"
+                  aria-label="Live Demo"
+                >
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 2 -->
+          <div class="project-card" data-project="2">
+            <div class="project-image">
+              <div class="project-placeholder">
+                <i class="fas fa-mobile-alt"></i>
+              </div>
+              <div class="project-overlay">
+                <button class="btn-view-details">View Details</button>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">Project Two</h3>
+              <p class="project-description">
+                Responsive web design project with modern CSS Grid and Flexbox
+                layouts, optimized for all device sizes.
+              </p>
+              <div class="project-links">
+                <a
+                  href="#"
+                  class="project-link"
+                  target="_blank"
+                  aria-label="GitHub"
+                >
+                  <i class="fab fa-github"></i>
+                </a>
+                <a
+                  href="#"
+                  class="project-link"
+                  target="_blank"
+                  aria-label="Live Demo"
+                >
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 3 -->
+          <div class="project-card" data-project="3">
+            <div class="project-image">
+              <div class="project-placeholder">
+                <i class="fas fa-globe"></i>
+              </div>
+              <div class="project-overlay">
+                <button class="btn-view-details">View Details</button>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">Project Three</h3>
+              <p class="project-description">
+                Interactive JavaScript application with dynamic content loading
+                and real-time user interactions.
+              </p>
+              <div class="project-links">
+                <a
+                  href="#"
+                  class="project-link"
+                  target="_blank"
+                  aria-label="GitHub"
+                >
+                  <i class="fab fa-github"></i>
+                </a>
+                <a
+                  href="#"
+                  class="project-link"
+                  target="_blank"
+                  aria-label="Live Demo"
+                >
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 4 -->
+          <div class="project-card" data-project="4">
+            <div class="project-image">
+              <div class="project-placeholder">
+                <i class="fas fa-rocket"></i>
+              </div>
+              <div class="project-overlay">
+                <button class="btn-view-details">View Details</button>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 class="project-title">Project Four</h3>
+              <p class="project-description">
+                Full-featured web application showcasing advanced CSS animations
+                and JavaScript functionality for an enhanced user experience.
+              </p>
+              <div class="project-links">
+                <a
+                  href="#"
+                  class="project-link"
+                  target="_blank"
+                  aria-label="GitHub"
+                >
+                  <i class="fab fa-github"></i>
+                </a>
+                <a
+                  href="#"
+                  class="project-link"
+                  target="_blank"
+                  aria-label="Live Demo"
+                >
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Modal -->
+    <div class="modal" id="project-modal">
+      <div class="modal-content">
+        <span class="modal-close" id="modal-close">&times;</span>
+        <div class="modal-body" id="modal-body">
+          <!-- Modal content will be injected via JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-content">
+          <!-- Contact Form -->
+          <form class="contact-form" id="contact-form">
+            <div class="form-group">
+              <input type="text" id="name" class="form-input" required />
+              <label for="name" class="form-label">Name</label>
+              <span class="form-error" id="name-error"></span>
+            </div>
+
+            <div class="form-group">
+              <input type="email" id="email" class="form-input" required />
+              <label for="email" class="form-label">Email</label>
+              <span class="form-error" id="email-error"></span>
+            </div>
+
+            <div class="form-group">
+              <textarea
+                id="message"
+                class="form-input form-textarea"
+                rows="5"
+                required
+              ></textarea>
+              <label for="message" class="form-label">Message</label>
+              <span class="form-error" id="message-error"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-submit">
+              Send Message
+            </button>
+          </form>
+
+          <!-- Social Links -->
+          <div class="social-links">
+            <h3 class="social-title">Connect With Me</h3>
+            <div class="social-icons">
+              <a
+                href="https://www.linkedin.com/in/alferid-zeynu-7a039330b/"
+                class="social-icon"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a
+                href="https://github.com/fe-rid/"
+                class="social-icon"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+              <a
+                href="https://t.me/fe_rid"
+                class="social-icon"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Telegram"
+              >
+                <i class="fab fa-telegram"></i>
+              </a>
+              <a
+                href="https://www.instagram.com/ferid_zu/"
+                class="social-icon"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p class="footer-text">
+          &copy; <span id="current-year"></span> Alferid. All rights reserved.
+        </p>
+        <p class="footer-subtext">
+          Built with <i class="fas fa-heart"></i> using HTML, CSS, and
+          JavaScript
+        </p>
+      </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+  </body>
+</html>

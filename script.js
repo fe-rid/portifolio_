@@ -47,6 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize project modals
     initProjectModals();
     
+    // Initialize certificate modals
+    initCertificateModals();
+    
     // Initialize form validation
     initFormValidation();
 });
@@ -152,7 +155,7 @@ function initMobileMenu() {
  */
 function initScrollAnimations() {
     // Select all elements that should animate on scroll
-    const revealElements = document.querySelectorAll('.about-content, .project-card, .contact-content, .section-title');
+    const revealElements = document.querySelectorAll('.about-content, .skill-item, .project-card, .certificate-card, .contact-content, .section-title');
     
     // Create Intersection Observer
     const observer = new IntersectionObserver((entries) => {
@@ -184,32 +187,25 @@ function initScrollAnimations() {
  */
 const projectsData = {
     1: {
-        title: 'Project One',
-        description: 'A modern web application built with HTML, CSS, and JavaScript featuring interactive UI components and smooth animations. This project showcases advanced front-end development techniques and responsive design principles.',
-        technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
-        github: '#',
-        demo: '#'
+        title: 'HandyConnect – Mobile App',
+        description: 'HandyConnect is a mobile application that connects users with nearby service providers. The app focuses on simplicity, performance, and user experience, allowing users to browse services, view provider details, and communicate efficiently.',
+        technologies: ['Flutter', 'Firebase', 'REST APIs'],
+        github: 'https://github.com/fe-rid/handyConnect',
+        demo: null
     },
     2: {
-        title: 'Project Two',
-        description: 'Responsive web design project with modern CSS Grid and Flexbox layouts, optimized for all device sizes. Features include smooth transitions, hover effects, and a clean, minimalist design approach.',
-        technologies: ['HTML5', 'CSS3', 'Flexbox', 'CSS Grid'],
-        github: '#',
-        demo: '#'
+        title: 'Adhkar Tracker – Mobile App',
+        description: 'Adhkar Tracker is a mobile application designed to help users track daily Adhkar and prayer-related reminders. The app provides timely notifications with a clean, minimal interface, focusing on accuracy, reliability, and ease of use.',
+        technologies: ['Flutter', 'Local Storage', 'Notifications'],
+        github: 'https://github.com/fe-rid/adhkar_tracker',
+        demo: null
     },
     3: {
-        title: 'Project Three',
-        description: 'Interactive JavaScript application with dynamic content loading and real-time user interactions. Includes form validation, modal popups, and smooth scroll animations for enhanced user experience.',
-        technologies: ['JavaScript', 'DOM Manipulation', 'Event Handling', 'AJAX'],
-        github: '#',
-        demo: '#'
-    },
-    4: {
-        title: 'Project Four',
-        description: 'Full-featured web application showcasing advanced CSS animations and JavaScript functionality for an enhanced user experience. Includes complex state management and interactive UI elements.',
-        technologies: ['HTML5', 'CSS3', 'JavaScript', 'Advanced Animations'],
-        github: '#',
-        demo: '#'
+        title: 'University Delivery App – Mobile App',
+        description: 'University Delivery App is a campus-based delivery solution that enables students to order food and essentials easily within the university environment. The app includes authentication, cart functionality, and order management features.',
+        technologies: ['Flutter', 'Firebase Authentication', 'Firestore'],
+        github: 'https://github.com/fe-rid/uni_delivery_app',
+        demo: null
     }
 };
 
@@ -279,12 +275,12 @@ function openModal(projectId) {
             ${project.technologies.map(tech => `<span>${tech}</span>`).join('')}
         </div>
         <div class="project-links" style="margin-top: 1.5rem;">
-            <a href="${project.github}" class="project-link" target="_blank" aria-label="GitHub">
+            <a href="${project.github}" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <i class="fab fa-github"></i>
             </a>
-            <a href="${project.demo}" class="project-link" target="_blank" aria-label="Live Demo">
+            ${project.demo ? `<a href="${project.demo}" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Live Demo">
                 <i class="fas fa-external-link-alt"></i>
-            </a>
+            </a>` : ''}
         </div>
     `;
     
@@ -299,6 +295,115 @@ function openModal(projectId) {
 function closeModal() {
     modal.classList.remove('active');
     document.body.style.overflow = ''; // Restore scrolling
+}
+
+// ========================================
+// Certificate Modal
+// ========================================
+/**
+ * Certificate data mapping
+ */
+const certificateData = {
+    'udacity': {
+        image: 'img/Programming Fundamentals.png',
+        title: 'Programming Fundamentals - Udacity'
+    },
+    'flutter-track': {
+        image: 'img/Alferid Zeinu.png',
+        title: 'Flutter Track Course - NSDA'
+    },
+    'hackathon': {
+        image: 'img/nsda hackathon.png',
+        title: 'Hackathon Winner - NSDA'
+    }
+};
+
+/**
+ * Initializes certificate modal functionality
+ */
+function initCertificateModals() {
+    const certificateModal = document.getElementById('certificate-modal');
+    const certificateModalClose = document.getElementById('certificate-modal-close');
+    const certificateModalBody = document.getElementById('certificate-modal-body');
+    const viewCertificateBtns = document.querySelectorAll('.btn-view-certificate');
+    
+    if (!certificateModal || !certificateModalBody) return;
+    
+    // Add click event to all "View Full Size" buttons
+    viewCertificateBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const certId = btn.getAttribute('data-cert');
+            openCertificateModal(certId);
+        });
+    });
+    
+    // Also open modal when clicking on certificate card
+    const certificateCards = document.querySelectorAll('.certificate-card');
+    certificateCards.forEach(card => {
+        card.addEventListener('click', (e) => {
+            if (!e.target.closest('.btn-view-certificate')) {
+                const btn = card.querySelector('.btn-view-certificate');
+                if (btn) {
+                    const certId = btn.getAttribute('data-cert');
+                    openCertificateModal(certId);
+                }
+            }
+        });
+    });
+    
+    // Close modal when clicking close button
+    if (certificateModalClose) {
+        certificateModalClose.addEventListener('click', () => {
+            closeCertificateModal();
+        });
+    }
+    
+    // Close modal when clicking outside modal content
+    certificateModal.addEventListener('click', (e) => {
+        if (e.target === certificateModal) {
+            closeCertificateModal();
+        }
+    });
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && certificateModal.classList.contains('active')) {
+            closeCertificateModal();
+        }
+    });
+}
+
+/**
+ * Opens the certificate modal and displays the certificate image
+ * @param {string} certId - The ID of the certificate to display
+ */
+function openCertificateModal(certId) {
+    const certificateModal = document.getElementById('certificate-modal');
+    const certificateModalBody = document.getElementById('certificate-modal-body');
+    const certificate = certificateData[certId];
+    
+    if (!certificate || !certificateModalBody) return;
+    
+    // Create modal content with certificate image
+    certificateModalBody.innerHTML = `
+        <img src="${certificate.image}" alt="${certificate.title}" />
+    `;
+    
+    // Show modal with animation
+    certificateModal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+}
+
+/**
+ * Closes the certificate modal
+ */
+function closeCertificateModal() {
+    const certificateModal = document.getElementById('certificate-modal');
+    if (certificateModal) {
+        certificateModal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
 }
 
 // ========================================

@@ -436,11 +436,20 @@ section {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2rem, 4vw, 3rem);
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+.projects-note {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    line-height: 1.8;
 }
 
 /* ========================================
@@ -469,18 +478,14 @@ section {
     height: 300px;
 }
 
-.avatar-placeholder {
+.profile-image {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 6rem;
-    color: var(--text-primary);
+    object-fit: cover;
     position: relative;
     z-index: 2;
+    border: 4px solid var(--dark-bg-light);
 }
 
 .image-border {
@@ -584,7 +589,7 @@ section {
 .project-image {
     position: relative;
     width: 100%;
-    height: 200px;
+    height: 300px;
     overflow: hidden;
     background-color: rgba(99, 102, 241, 0.1);
 }
@@ -597,6 +602,13 @@ section {
     justify-content: center;
     font-size: 4rem;
     color: var(--primary-color);
+    transition: var(--transition-normal);
+}
+
+.project-screenshot {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     transition: var(--transition-normal);
 }
 
@@ -620,6 +632,10 @@ section {
 
 .project-card:hover .project-placeholder {
     transform: scale(1.1);
+}
+
+.project-card:hover .project-screenshot {
+    transform: scale(1.05);
 }
 
 .btn-view-details {
@@ -677,6 +693,224 @@ section {
     color: var(--text-primary);
     transform: translateY(-3px);
     box-shadow: var(--shadow-md);
+}
+
+/* ========================================
+   Skills Section Styles
+   ======================================== */
+.skills-section {
+    background-color: var(--dark-bg-light);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.skill-item {
+    background-color: var(--dark-bg);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    transition: var(--transition-normal);
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(236, 72, 153, 0.05));
+    opacity: 0;
+    transition: var(--transition-normal);
+}
+
+.skill-item:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+
+.skill-item:hover::before {
+    opacity: 1;
+}
+
+.skill-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    transition: var(--transition-normal);
+    position: relative;
+    z-index: 1;
+}
+
+.skill-item:hover .skill-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: var(--shadow-glow);
+}
+
+.skill-name {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+}
+
+.skill-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+}
+
+/* ========================================
+   Certificates Section Styles
+   ======================================== */
+.certificates {
+    background-color: var(--dark-bg);
+}
+
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.certificate-card {
+    background-color: var(--dark-bg-light);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: var(--transition-normal);
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    cursor: pointer;
+}
+
+.certificate-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+
+.certificate-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    background-color: rgba(99, 102, 241, 0.05);
+}
+
+.certificate-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-normal);
+}
+
+.certificate-card:hover .certificate-image {
+    transform: scale(1.1);
+}
+
+.certificate-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.9), rgba(236, 72, 153, 0.9));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition-normal);
+}
+
+.certificate-card:hover .certificate-overlay {
+    opacity: 1;
+}
+
+.btn-view-certificate {
+    padding: 12px 24px;
+    background-color: var(--text-primary);
+    color: var(--dark-bg);
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+}
+
+.btn-view-certificate:hover {
+    transform: scale(1.1);
+}
+
+.btn-view-certificate i {
+    font-size: 1.2rem;
+}
+
+.certificate-info {
+    padding: 1.5rem;
+}
+
+.certificate-title {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.certificate-issuer,
+.certificate-date {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.certificate-issuer i,
+.certificate-date i {
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+/* Certificate Modal Styles */
+.modal-certificate {
+    max-width: 95%;
+    width: 95%;
+    max-height: 95vh;
+    padding: 1rem;
+}
+
+.modal-certificate-body {
+    text-align: center;
+}
+
+.modal-certificate-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: var(--shadow-lg);
 }
 
 /* ========================================
@@ -985,12 +1219,19 @@ section {
         height: 250px;
     }
     
-    .avatar-placeholder {
-        font-size: 5rem;
-    }
     
     /* Projects Grid */
     .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Skills Grid */
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Certificates Grid */
+    .certificates-grid {
         grid-template-columns: 1fr;
     }
     
@@ -1064,8 +1305,5 @@ section {
         height: 200px;
     }
     
-    .avatar-placeholder {
-        font-size: 4rem;
-    }
 }
 

@@ -190,14 +190,14 @@ const projectsData = {
         title: 'HandyConnect – Mobile App',
         description: 'HandyConnect is a mobile application that connects users with nearby service providers. The app focuses on simplicity, performance, and user experience, allowing users to browse services, view provider details, and communicate efficiently.',
         technologies: ['Flutter', 'Firebase', 'REST APIs'],
-        github: 'https://github.com/fe-rid/handyConnect',
+        github: 'https://github.com/Abdurezakkemal/Handy_Connect/tree/main/handy_connect',
         demo: null
     },
     2: {
-        title: 'Adhkar Tracker – Mobile App',
-        description: 'Adhkar Tracker is a mobile application designed to help users track daily Adhkar and prayer-related reminders. The app provides timely notifications with a clean, minimal interface, focusing on accuracy, reliability, and ease of use.',
-        technologies: ['Flutter', 'Local Storage', 'Notifications'],
-        github: 'https://github.com/fe-rid/adhkar_tracker',
+        title: 'Expense Tracker App',
+        description: 'Expense Tracker App is a mobile application that helps users record, manage, and analyze daily expenses. Users can add income and expense entries, categorize transactions, and view clear summaries of their spending habits through a clean and intuitive interface.',
+        technologies: ['Vite', 'React', 'TypeScript', 'TailwindCSS', 'Supabase', 'Capacitor (Android)'],
+        github: 'https://github.com/fe-rid/expenseTracker',
         demo: null
     },
     3: {

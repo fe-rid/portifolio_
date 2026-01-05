@@ -1066,6 +1066,22 @@ section {
   font-size: 0.9rem;
 }
 
+.modal-project-image {
+  width: 100%;
+  margin-bottom: 2rem;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.modal-project-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
 /* ========================================
    Contact Section Styles
    ======================================== */

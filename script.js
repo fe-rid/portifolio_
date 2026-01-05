@@ -31,25 +31,25 @@ document.addEventListener('DOMContentLoaded', () => {
     if (currentYear) {
         currentYear.textContent = new Date().getFullYear();
     }
-    
+
     // Initialize scroll animations
     initScrollAnimations();
-    
+
     // Initialize smooth scroll
     initSmoothScroll();
-    
+
     // Initialize header scroll effect
     initHeaderScroll();
-    
+
     // Initialize mobile menu
     initMobileMenu();
-    
+
     // Initialize project modals
     initProjectModals();
-    
+
     // Initialize certificate modals
     initCertificateModals();
-    
+
     // Initialize form validation
     initFormValidation();
 });
@@ -81,19 +81,19 @@ function initSmoothScroll() {
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            
+
             const targetId = link.getAttribute('href');
             const targetSection = document.querySelector(targetId);
-            
+
             if (targetSection) {
                 const headerHeight = header.offsetHeight;
                 const targetPosition = targetSection.offsetTop - headerHeight;
-                
+
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
                 });
-                
+
                 // Close mobile menu if open
                 if (navMenu.classList.contains('active')) {
                     navMenu.classList.remove('active');
@@ -102,7 +102,7 @@ function initSmoothScroll() {
             }
         });
     });
-    
+
     // Smooth scroll for "View My Work" button
     const viewWorkBtn = document.querySelector('.btn-primary[href="#projects"]');
     if (viewWorkBtn) {
@@ -133,7 +133,7 @@ function initMobileMenu() {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
-        
+
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
@@ -156,7 +156,7 @@ function initMobileMenu() {
 function initScrollAnimations() {
     // Select all elements that should animate on scroll
     const revealElements = document.querySelectorAll('.about-content, .skill-item, .project-card, .certificate-card, .contact-content, .section-title');
-    
+
     // Create Intersection Observer
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -170,7 +170,7 @@ function initScrollAnimations() {
         threshold: 0.1, // Trigger when 10% of element is visible
         rootMargin: '0px 0px -50px 0px' // Trigger slightly before element enters viewport
     });
-    
+
     // Add scroll-reveal class and observe each element
     revealElements.forEach(element => {
         element.classList.add('scroll-reveal');
@@ -189,22 +189,25 @@ const projectsData = {
     1: {
         title: 'HandyConnect – Mobile App',
         description: 'HandyConnect is a mobile application that connects users with nearby service providers. The app focuses on simplicity, performance, and user experience, allowing users to browse services, view provider details, and communicate efficiently.',
+        image: 'img/handy connect.png',
         technologies: ['Flutter', 'Firebase', 'REST APIs'],
-        github: 'https://github.com/Abdurezakkemal/Handy_Connect/tree/main/handy_connect',
+        download: 'apps/Handy-Connect.apk',
         demo: null
     },
     2: {
         title: 'Expense Tracker App',
         description: 'Expense Tracker App is a mobile application that helps users record, manage, and analyze daily expenses. Users can add income and expense entries, categorize transactions, and view clear summaries of their spending habits through a clean and intuitive interface.',
+        image: 'img/home.png',
         technologies: ['Vite', 'React', 'TypeScript', 'TailwindCSS', 'Supabase', 'Capacitor (Android)'],
-        github: 'https://github.com/fe-rid/expenseTracker',
+        download: 'apps/Expense-Tracker.apk',
         demo: null
     },
     3: {
-        title: 'University Delivery App – Mobile App',
-        description: 'University Delivery App is a campus-based delivery solution that enables students to order food and essentials easily within the university environment. The app includes authentication, cart functionality, and order management features.',
-        technologies: ['Flutter', 'Firebase Authentication', 'Firestore'],
-        github: 'https://github.com/fe-rid/uni_delivery_app',
+        title: 'University Delivery App',
+        description: 'University Delivery App is a comprehensive campus-based delivery platform that enables students to order food and essentials with ease. The application features a streamlined ordering process, secure authentication, and specialized interfaces for students, shopkeepers, and runners to manage orders and deliveries efficiently.',
+        image: 'img/uni delivery.png',
+        technologies: ['Vite', 'React', 'Node.js', 'MongoDB', 'TailwindCSS', 'Express'],
+        download: 'apps/University-Delivery.apk',
         demo: null
     }
 };
@@ -216,7 +219,7 @@ function initProjectModals() {
     projectCards.forEach(card => {
         const viewDetailsBtn = card.querySelector('.btn-view-details');
         const cardElement = card;
-        
+
         // Add click event to "View Details" button
         if (viewDetailsBtn) {
             viewDetailsBtn.addEventListener('click', (e) => {
@@ -225,7 +228,7 @@ function initProjectModals() {
                 openModal(projectId);
             });
         }
-        
+
         // Add click event to entire card (optional - opens modal on card click)
         cardElement.addEventListener('click', (e) => {
             // Don't open modal if clicking on links
@@ -235,12 +238,12 @@ function initProjectModals() {
             }
         });
     });
-    
+
     // Close modal when clicking close button
     if (modalClose) {
         modalClose.addEventListener('click', closeModal);
     }
-    
+
     // Close modal when clicking outside modal content
     if (modal) {
         modal.addEventListener('click', (e) => {
@@ -249,7 +252,7 @@ function initProjectModals() {
             }
         });
     }
-    
+
     // Close modal with Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal.classList.contains('active')) {
@@ -264,26 +267,28 @@ function initProjectModals() {
  */
 function openModal(projectId) {
     const project = projectsData[projectId];
-    
+
     if (!project) return;
-    
+
     // Create modal content
     modalBody.innerHTML = `
         <h3>${project.title}</h3>
+        ${project.image ? `<div class="modal-project-image"><img src="${project.image}" alt="${project.title}"></div>` : ''}
         <p>${project.description}</p>
         <div class="project-tech">
             ${project.technologies.map(tech => `<span>${tech}</span>`).join('')}
         </div>
         <div class="project-links" style="margin-top: 1.5rem;">
-            <a href="${project.github}" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                <i class="fab fa-github"></i>
-            </a>
+            ${project.download ? `
+            <a href="${project.download}" class="project-link" download aria-label="Download App">
+                <i class="fas fa-download"></i>
+            </a>` : ''}
             ${project.demo ? `<a href="${project.demo}" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Live Demo">
                 <i class="fas fa-external-link-alt"></i>
             </a>` : ''}
         </div>
     `;
-    
+
     // Show modal with animation
     modal.classList.add('active');
     document.body.style.overflow = 'hidden'; // Prevent background scrolling
@@ -326,9 +331,9 @@ function initCertificateModals() {
     const certificateModalClose = document.getElementById('certificate-modal-close');
     const certificateModalBody = document.getElementById('certificate-modal-body');
     const viewCertificateBtns = document.querySelectorAll('.btn-view-certificate');
-    
+
     if (!certificateModal || !certificateModalBody) return;
-    
+
     // Add click event to all "View Full Size" buttons
     viewCertificateBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -337,7 +342,7 @@ function initCertificateModals() {
             openCertificateModal(certId);
         });
     });
-    
+
     // Also open modal when clicking on certificate card
     const certificateCards = document.querySelectorAll('.certificate-card');
     certificateCards.forEach(card => {
@@ -351,21 +356,21 @@ function initCertificateModals() {
             }
         });
     });
-    
+
     // Close modal when clicking close button
     if (certificateModalClose) {
         certificateModalClose.addEventListener('click', () => {
             closeCertificateModal();
         });
     }
-    
+
     // Close modal when clicking outside modal content
     certificateModal.addEventListener('click', (e) => {
         if (e.target === certificateModal) {
             closeCertificateModal();
         }
     });
-    
+
     // Close modal with Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && certificateModal.classList.contains('active')) {
@@ -382,14 +387,14 @@ function openCertificateModal(certId) {
     const certificateModal = document.getElementById('certificate-modal');
     const certificateModalBody = document.getElementById('certificate-modal-body');
     const certificate = certificateData[certId];
-    
+
     if (!certificate || !certificateModalBody) return;
-    
+
     // Create modal content with certificate image
     certificateModalBody.innerHTML = `
         <img src="${certificate.image}" alt="${certificate.title}" />
     `;
-    
+
     // Show modal with animation
     certificateModal.classList.add('active');
     document.body.style.overflow = 'hidden'; // Prevent background scrolling
@@ -414,48 +419,48 @@ function closeCertificateModal() {
  */
 function initFormValidation() {
     if (!contactForm) return;
-    
+
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
     const messageInput = document.getElementById('message');
     const nameError = document.getElementById('name-error');
     const emailError = document.getElementById('email-error');
     const messageError = document.getElementById('message-error');
-    
+
     // Real-time validation on input
     if (nameInput) {
         nameInput.addEventListener('blur', () => validateName());
         nameInput.addEventListener('input', () => clearError(nameError));
     }
-    
+
     if (emailInput) {
         emailInput.addEventListener('blur', () => validateEmail());
         emailInput.addEventListener('input', () => clearError(emailError));
     }
-    
+
     if (messageInput) {
         messageInput.addEventListener('blur', () => validateMessage());
         messageInput.addEventListener('input', () => clearError(messageError));
     }
-    
+
     // Form submission
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        
+
         const isNameValid = validateName();
         const isEmailValid = validateEmail();
         const isMessageValid = validateMessage();
-        
+
         if (isNameValid && isEmailValid && isMessageValid) {
             // Form is valid - you can add code here to submit the form
             // For example: send data to a server, show success message, etc.
-            
+
             // Show success message (you can customize this)
             alert('Thank you for your message! I will get back to you soon.');
-            
+
             // Reset form
             contactForm.reset();
-            
+
             // Reset labels position
             const labels = document.querySelectorAll('.form-label');
             labels.forEach(label => {
@@ -475,7 +480,7 @@ function initFormValidation() {
             }
         }
     });
-    
+
     /**
      * Validates the name field
      * @returns {boolean} True if valid, false otherwise
@@ -493,7 +498,7 @@ function initFormValidation() {
         clearError(nameError);
         return true;
     }
-    
+
     /**
      * Validates the email field
      * @returns {boolean} True if valid, false otherwise
@@ -501,7 +506,7 @@ function initFormValidation() {
     function validateEmail() {
         const email = emailInput.value.trim();
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        
+
         if (!email) {
             showError(emailError, 'Email is required');
             return false;
@@ -513,7 +518,7 @@ function initFormValidation() {
         clearError(emailError);
         return true;
     }
-    
+
     /**
      * Validates the message field
      * @returns {boolean} True if valid, false otherwise
@@ -531,7 +536,7 @@ function initFormValidation() {
         clearError(messageError);
         return true;
     }
-    
+
     /**
      * Displays an error message
      * @param {HTMLElement} errorElement - The error element to show message in
@@ -542,7 +547,7 @@ function initFormValidation() {
             errorElement.textContent = message;
         }
     }
-    
+
     /**
      * Clears an error message
      * @param {HTMLElement} errorElement - The error element to clear
@@ -565,7 +570,7 @@ function initFormValidation() {
 function smoothScrollTo(element, offset = 0) {
     const elementPosition = element.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.pageYOffset - offset;
-    
+
     window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'

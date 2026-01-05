@@ -192,6 +192,7 @@ const projectsData = {
         image: 'img/handy connect.png',
         technologies: ['Flutter', 'Firebase', 'REST APIs'],
         download: 'apps/Handy-Connect.apk',
+        github: 'https://github.com/Abdurezakkemal/Handy_Connect/tree/main/handy_connect',
         demo: null
     },
     2: {
@@ -200,6 +201,7 @@ const projectsData = {
         image: 'img/home.png',
         technologies: ['Vite', 'React', 'TypeScript', 'TailwindCSS', 'Supabase', 'Capacitor (Android)'],
         download: 'apps/Expense-Tracker.apk',
+        github: 'https://github.com/fe-rid/expenseTracker',
         demo: null
     },
     3: {
@@ -208,6 +210,7 @@ const projectsData = {
         image: 'img/uni delivery.png',
         technologies: ['Vite', 'React', 'Node.js', 'MongoDB', 'TailwindCSS', 'Express'],
         download: 'apps/University-Delivery.apk',
+        github: 'https://github.com/fe-rid/uniDeliveryApp',
         demo: null
     }
 };
@@ -282,6 +285,10 @@ function openModal(projectId) {
             ${project.download ? `
             <a href="${project.download}" class="project-link" download aria-label="Download App">
                 <i class="fas fa-download"></i>
+            </a>` : ''}
+            ${project.github ? `
+            <a href="${project.github}" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <i class="fab fa-github"></i>
             </a>` : ''}
             ${project.demo ? `<a href="${project.demo}" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Live Demo">
                 <i class="fas fa-external-link-alt"></i>

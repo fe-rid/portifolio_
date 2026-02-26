@@ -31,11 +31,11 @@ Welcome to my premium digital sandbox. I am Alferid, a Software Engineering stud
 
 ### Frameworks & Libraries
 ![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
+
 ![Flutter](https://img.shields.io/badge/Flutter-02569B?style=flat-square&logo=flutter&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
 ![Django](https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38BDF8?style=flat-square&logo=tailwindcss&logoColor=white)
+
 
 ---
 
@@ -43,7 +43,7 @@ Welcome to my premium digital sandbox. I am Alferid, a Software Engineering stud
 
 *   **📱 HandyConnect**: A cross-platform mobile app connecting service providers. [Flutter, Firebase]
 *   **💰 Expense Tracker**: Comprehensive financial management suite. [React, TypeScript, Supabase]
-*   **🛒 University Delivery**: Streamlined campus ordering ecosystem. [Node.js, MongoDB]
+*   **🛒 University Delivery**: Streamlined campus ordering ecosystem. [Node.js]
 
 ---
 

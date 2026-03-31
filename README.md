@@ -39,9 +39,11 @@ Welcome to my premium digital sandbox. I am Alferid, a Software Engineering stud
 
 ---
 
-## 📱 Featured Engineering Work
+## 🚀 Featured Engineering Work
 
+*   **📱 Stay Manager**: A comprehensive hotel management system with a focus on seamless operations and premium guest experience. [React, TypeScript, Vite, Capacitor]
 *   **📱 HandyConnect**: A cross-platform mobile app connecting service providers. [Flutter, Firebase]
+*   **🌐 Campus Service**: A high-performance web platform for streamlined student life and service requests. [React, TypeScript, Vite, TailwindCSS]
 *   **💰 Expense Tracker**: Comprehensive financial management suite. [React, TypeScript, Supabase]
 *   **🛒 University Delivery**: Streamlined campus ordering ecosystem. [Node.js]
 

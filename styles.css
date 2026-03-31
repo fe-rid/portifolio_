@@ -541,15 +541,19 @@ section {
 .image-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 1;
+  aspect-ratio: 4/5;
   border-radius: var(--radius-md);
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(3, 7, 18, 0.4);
 }
 
 .profile-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
   transition: var(--trans-slow);
 }
 
@@ -641,8 +645,8 @@ section {
   color: #339933;
 }
 
-.skill-dart i {
-  color: #00CCFF;
+.skill-nextjs i {
+  color: #fff;
 }
 
 .skill-flutter i {
@@ -683,24 +687,24 @@ section {
 
 
 
-.skill-django i {
-  color: #092e20;
+.skill-go i {
+  color: #00ADD8;
 }
 
 .skill-mysql i {
   color: #00758f;
 }
 
-.skill-photoshop i {
-  color: #31a8ff;
+.skill-supabase i {
+  color: #3ECF8E;
 }
 
 .skill-video i {
   color: #ff0000;
 }
 
-.skill-social i {
-  color: #1877f2;
+.skill-mongodb i {
+  color: #47A248;
 }
 
 
@@ -745,15 +749,19 @@ section {
 .project-image {
   position: relative;
   width: 100%;
-  aspect-ratio: 16/10;
+  aspect-ratio: 1;
   overflow: hidden;
-  background: var(--bg-card);
+  background: rgba(3, 7, 18, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--glass-border);
 }
 
 .project-screenshot {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
   transition: var(--trans-slow);
 }
 
@@ -1145,7 +1153,7 @@ section {
   background: var(--bg-surface);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
-  max-width: 800px;
+  max-width: 900px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
@@ -1153,6 +1161,32 @@ section {
   padding: 3rem;
   transform: scale(0.9);
   transition: transform 0.3s ease;
+}
+
+.modal-project-image {
+  width: 100%;
+  margin-bottom: 2rem;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-project-image img,
+.modal-certificate-body img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.modal-certificate-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .modal.active .modal-content {

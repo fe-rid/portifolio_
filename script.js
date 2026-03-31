@@ -212,6 +212,24 @@ const projectsData = {
         download: 'apps/University-Delivery.apk',
         github: 'https://github.com/fe-rid/uniDeliveryApp',
         demo: null
+    },
+    4: {
+        title: 'Stay Manager',
+        description: 'Stay Manager is a comprehensive hotel management system designed to streamline operations, manage bookings, and enhance the guest experience with a clean and intuitive interface.',
+        image: 'img/stay manager.png',
+        technologies: ['React', 'TypeScript', 'TailwindCSS', 'Vite', 'Capacitor'],
+        download: 'apps/StayManager.apk',
+        github: 'https://github.com/fe-rid/hotel_management_saas',
+        demo: null
+    },
+    5: {
+        title: 'Campus Service Website',
+        description: 'Campus Service is a web platform designed to streamline student life and service requests. It provides a modern, fast, and responsive user experience for the campus community.',
+        image: 'img/campus service.png',
+        technologies: ['React', 'TypeScript', 'Vite', 'TailwindCSS'],
+        download: null,
+        github: 'https://github.com/fe-rid/Campus-Service',
+        demo: 'https://campus-service.vercel.app/'
     }
 };
 

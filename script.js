@@ -228,8 +228,17 @@ const projectsData = {
         image: 'img/campus service.png',
         technologies: ['React', 'TypeScript', 'Vite', 'TailwindCSS'],
         download: null,
-        github: 'https://github.com/fe-rid/Campus-Service',
+        github: 'https://github.com/fe-rid/uni_service', 
         demo: 'https://campus-service.vercel.app/'
+    },
+    6: {
+        title: 'Study AI – AI-Powered Assistant',
+        description: 'Study AI is a professional AI-driven platform designed to help students learn and study more efficiently. With an intuitive, modern interface, it allows users to explore complex academic topics like Computer Science, Physics, and History using advanced AI tools.',
+        image: 'img/study ai.png',
+        technologies: ['Next.js', 'OpenAI API', 'TypeScript', 'TailwindCSS', 'Vercel Deployment'],
+        download: null,
+        github: 'https://github.com/fe-rid/study_AI', 
+        demo: 'https://study-ai-av21.vercel.app/'
     }
 };
 

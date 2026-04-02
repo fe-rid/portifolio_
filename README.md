@@ -43,8 +43,9 @@ Welcome to my premium digital sandbox. I am Alferid, a Software Engineering stud
 
 *   **📱 Stay Manager**: A comprehensive hotel management system with a focus on seamless operations and premium guest experience. [React, TypeScript, Vite, Capacitor]
 *   **📱 HandyConnect**: A cross-platform mobile app connecting service providers. [Flutter, Firebase]
-*   **🌐 Campus Service**: A high-performance web platform for streamlined student life and service requests. [React, TypeScript, Vite, TailwindCSS]
+*   **🌐 Campus Service**: A high-performance web platform for streamlined student life and service requests. [Live Demo](https://campus-service.vercel.app/) | [GitHub](https://github.com/fe-rid/uni_service) [React, TypeScript, Vite, TailwindCSS]
 *   **💰 Expense Tracker**: Comprehensive financial management suite. [React, TypeScript, Supabase]
+*   **🌐 Study AI**: A professional AI-powered academic assistant platform that helps students learn effectively. [Live Demo](https://study-ai-av21.vercel.app/) | [GitHub](https://github.com/fe-rid/study_AI) [Next.js, OpenAI API, TailwindCSS]
 *   **🛒 University Delivery**: Streamlined campus ordering ecosystem. [Node.js]
 
 ---

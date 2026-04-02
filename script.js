@@ -234,7 +234,7 @@ const projectsData = {
     6: {
         title: 'Study AI – AI-Powered Assistant',
         description: 'Study AI is a professional AI-driven platform designed to help students learn and study more efficiently. With an intuitive, modern interface, it allows users to explore complex academic topics like Computer Science, Physics, and History using advanced AI tools.',
-        image: 'img/study ai.png',
+        image: 'img/Study Ai.png',
         technologies: ['Next.js', 'OpenAI API', 'TypeScript', 'TailwindCSS', 'Vercel Deployment'],
         download: null,
         github: 'https://github.com/fe-rid/study_AI', 

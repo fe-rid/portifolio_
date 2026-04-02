@@ -80,24 +80,28 @@ function initHeaderScroll() {
 function initSmoothScroll() {
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault();
-
             const targetId = link.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
 
-            if (targetSection) {
-                const headerHeight = header.offsetHeight;
-                const targetPosition = targetSection.offsetTop - headerHeight;
+            // Only smooth scroll if link is an internal anchor
+            if (targetId.startsWith('#')) {
+                e.preventDefault();
 
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+                const targetSection = document.querySelector(targetId);
 
-                // Close mobile menu if open
-                if (navMenu.classList.contains('active')) {
-                    navMenu.classList.remove('active');
-                    hamburger.classList.remove('active');
+                if (targetSection) {
+                    const headerHeight = header.offsetHeight;
+                    const targetPosition = targetSection.offsetTop - headerHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile menu if open
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    }
                 }
             }
         });

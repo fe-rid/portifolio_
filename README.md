@@ -4,7 +4,7 @@
 ![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
 ![Tech](https://img.shields.io/badge/Tech-Fullstack%20%26%20Mobile-blue?style=for-the-badge)
 
-Welcome to my premium digital sandbox. I am Alferid, a Software Engineering student focused on building high-performance architectures and immersive user experiences across web and mobile platforms.
+Welcome to my premium digital sandbox. I am Alferid, a Full Stack Developer with **2+ years of experience** focused on building high-performance architectures and immersive user experiences across web and mobile platforms.
 
 ---
 

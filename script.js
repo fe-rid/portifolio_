@@ -1,69 +1,70 @@
 /**
- * Portfolio Website JavaScript
- * Features:
- * - Smooth scrolling navigation
- * - Mobile menu toggle
- * - Scroll animations
- * - Project modal popup
- * - Form validation
- * - Header background on scroll
+ * Alferid Zeinu - Portfolio JavaScript
+ * Premium Minimalist Edition
  */
 
-// ========================================
-// DOM Elements
-// ========================================
-const header = document.getElementById('header');
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('nav-menu');
-const navLinks = document.querySelectorAll('.nav-link');
-const contactForm = document.getElementById('contact-form');
-const projectCards = document.querySelectorAll('.project-card');
-const modal = document.getElementById('project-modal');
-const modalClose = document.getElementById('modal-close');
-const modalBody = document.getElementById('modal-body');
-const currentYear = document.getElementById('current-year');
-
-// ========================================
-// Initialize
-// ========================================
 document.addEventListener('DOMContentLoaded', () => {
-    // Set current year in footer
-    if (currentYear) {
-        currentYear.textContent = new Date().getFullYear();
-    }
-
-    // Initialize scroll animations
-    initScrollAnimations();
-
-    // Initialize smooth scroll
+    initTheme();
+    initLocalTime();
+    initHeader();
     initSmoothScroll();
-
-    // Initialize header scroll effect
-    initHeaderScroll();
-
-    // Initialize mobile menu
-    initMobileMenu();
-
-    // Initialize project modals
+    initScrollReveal();
     initProjectModals();
-
-    // Initialize certificate modals
-    initCertificateModals();
-
-    // Initialize form validation
-    initFormValidation();
+    initYear();
 });
 
-// ========================================
-// Header Scroll Effect
-// ========================================
 /**
- * Adds/removes 'scrolled' class to header on scroll
- * Changes header background from transparent to solid
+ * Update local time in the hero section
  */
-function initHeaderScroll() {
+function initLocalTime() {
+    const timeElement = document.getElementById('local-time');
+    if (!timeElement) return;
+
+    const updateTime = () => {
+        const now = new Date();
+        const options = {
+            timeZone: 'Africa/Addis_Ababa',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true
+        };
+        const timeString = now.toLocaleTimeString('en-US', options);
+        timeElement.textContent = `Addis Ababa, ET — ${timeString}`;
+    };
+
+    updateTime();
+    setInterval(updateTime, 60000); // Update every minute
+}
+
+/**
+ * Handle Theme Switching
+ */
+function initTheme() {
+    const themeToggle = document.getElementById('theme-toggle');
+    if (!themeToggle) return;
+
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('portfolio-theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+    }
+
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        
+        // Save preference
+        if (document.body.classList.contains('dark-mode')) {
+            localStorage.setItem('portfolio-theme', 'dark');
+        } else {
+            localStorage.setItem('portfolio-theme', 'light');
+        }
+    });
+}
+
+function initHeader() {
+    const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
+        if (window.scrollY > 50) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
@@ -71,547 +72,173 @@ function initHeaderScroll() {
     });
 }
 
-// ========================================
-// Smooth Scroll Navigation
-// ========================================
 /**
- * Implements smooth scrolling for navigation links
+ * Simple smooth scroll for navigation
  */
 function initSmoothScroll() {
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            const targetId = link.getAttribute('href');
-
-            // Only smooth scroll if link is an internal anchor
-            if (targetId.startsWith('#')) {
-                e.preventDefault();
-
-                const targetSection = document.querySelector(targetId);
-
-                if (targetSection) {
-                    const headerHeight = header.offsetHeight;
-                    const targetPosition = targetSection.offsetTop - headerHeight;
-
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-
-                    // Close mobile menu if open
-                    if (navMenu.classList.contains('active')) {
-                        navMenu.classList.remove('active');
-                        hamburger.classList.remove('active');
-                    }
-                }
-            }
-        });
-    });
-
-    // Smooth scroll for "View My Work" button
-    const viewWorkBtn = document.querySelector('.btn-primary[href="#projects"]');
-    if (viewWorkBtn) {
-        viewWorkBtn.addEventListener('click', (e) => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const projectsSection = document.querySelector('#projects');
-            if (projectsSection) {
-                const headerHeight = header.offsetHeight;
-                const targetPosition = projectsSection.offsetTop - headerHeight;
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+                const navHeight = document.getElementById('header').offsetHeight;
                 window.scrollTo({
-                    top: targetPosition,
+                    top: targetElement.offsetTop - navHeight,
                     behavior: 'smooth'
                 });
             }
         });
-    }
+    });
 }
 
-// ========================================
-// Mobile Menu Toggle
-// ========================================
 /**
- * Handles mobile hamburger menu toggle with slide animation
+ * intersection observer for fade-in animations
  */
-function initMobileMenu() {
-    if (hamburger && navMenu) {
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
+function initScrollReveal() {
+    const revealElements = document.querySelectorAll('.reveal');
 
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-                if (navMenu.classList.contains('active')) {
-                    navMenu.classList.remove('active');
-                    hamburger.classList.remove('active');
-                }
-            }
-        });
-    }
-}
-
-// ========================================
-// Scroll Animations
-// ========================================
-/**
- * Adds scroll reveal animations to elements
- * Elements fade in and slide up when they come into view
- */
-function initScrollAnimations() {
-    // Select all elements that should animate on scroll
-    const revealElements = document.querySelectorAll('.about-content, .skill-item, .project-card, .certificate-card, .contact-content, .section-title');
-
-    // Create Intersection Observer
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
-                // Unobserve after animation to improve performance
+                entry.target.classList.add('active');
                 observer.unobserve(entry.target);
             }
         });
-    }, {
-        threshold: 0.1, // Trigger when 10% of element is visible
-        rootMargin: '0px 0px -50px 0px' // Trigger slightly before element enters viewport
+    }, { 
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
     });
 
-    // Add scroll-reveal class and observe each element
-    revealElements.forEach(element => {
-        element.classList.add('scroll-reveal');
-        observer.observe(element);
-    });
+    revealElements.forEach(el => observer.observe(el));
 }
 
-// ========================================
-// Project Modal
-// ========================================
 /**
- * Project data - Easy to customize with your actual projects
- * Add more projects by adding objects to this array
+ * Project Data & Modals
  */
 const projectsData = {
     1: {
-        title: 'HandyConnect – Mobile App',
-        description: 'HandyConnect is a mobile application that connects users with nearby service providers. The app focuses on simplicity, performance, and user experience, allowing users to browse services, view provider details, and communicate efficiently.',
+        title: 'HandyConnect',
+        description: 'A mobile application connecting users with nearby service providers. Real-time communication and provider discovery.',
         image: 'img/handy connect.png',
-        technologies: ['Flutter', 'Firebase', 'REST APIs'],
-        download: 'apps/Handy-Connect.apk',
+        tech: ['Flutter', 'Firebase', 'Google Maps API'],
         github: 'https://github.com/Abdurezakkemal/Handy_Connect/tree/main/handy_connect',
-        demo: null
+        download: 'apps/Handy-Connect.apk'
     },
     2: {
-        title: 'Expense Tracker App',
-        description: 'Expense Tracker App is a mobile application that helps users record, manage, and analyze daily expenses. Users can add income and expense entries, categorize transactions, and view clear summaries of their spending habits through a clean and intuitive interface.',
+        title: 'Expense Tracker',
+        description: 'Intuitive personal finance management app. Track spending, categorize expenses, and visualize financial health.',
         image: 'img/home.png',
-        technologies: ['Vite', 'React', 'TypeScript', 'TailwindCSS', 'Supabase', 'Capacitor (Android)'],
-        download: 'apps/Expense-Tracker.apk',
+        tech: ['React', 'TypeScript', 'Supabase'],
         github: 'https://github.com/fe-rid/expenseTracker',
-        demo: null
+        download: 'apps/Expense-Tracker.apk'
     },
     3: {
-        title: 'University Delivery App',
-        description: 'University Delivery App is a comprehensive campus-based delivery platform that enables students to order food and essentials with ease. The application features a streamlined ordering process, secure authentication, and specialized interfaces for students, shopkeepers, and runners to manage orders and deliveries efficiently.',
+        title: 'Uni Delivery',
+        description: 'Campus-wide delivery ecosystem for students. Streamlined ordering and tracking for university services.',
         image: 'img/uni delivery.png',
-        technologies: ['Vite', 'React', 'Node.js', 'MongoDB', 'TailwindCSS', 'Express'],
-        download: 'apps/University-Delivery.apk',
+        tech: ['React', 'Node.js', 'MongoDB'],
         github: 'https://github.com/fe-rid/uniDeliveryApp',
-        demo: null
+        download: 'apps/University-Delivery.apk'
     },
     4: {
         title: 'Stay Manager',
-        description: 'Stay Manager is a comprehensive hotel management system designed to streamline operations, manage bookings, and enhance the guest experience with a clean and intuitive interface.',
+        description: 'Professional SaaS solution for hotel management. Handle bookings, guests, and administrative tasks.',
         image: 'img/stay manager.png',
-        technologies: ['React', 'TypeScript', 'TailwindCSS', 'Vite', 'Capacitor'],
-        download: 'apps/StayManager.apk',
+        tech: ['React', 'TypeScript', 'Tailwind'],
         github: 'https://github.com/fe-rid/hotel_management_saas',
-        demo: null
+        download: 'apps/StayManager.apk'
     },
     5: {
-        title: 'Campus Service Website',
-        description: 'Campus Service is a web platform designed to streamline student life and service requests. It provides a modern, fast, and responsive user experience for the campus community.',
+        title: 'Campus Service',
+        description: 'A centralized portal for all university student resources. Announcements, help desks, and peer services.',
         image: 'img/campus service.png',
-        technologies: ['React', 'TypeScript', 'Vite', 'TailwindCSS'],
-        download: null,
-        github: 'https://github.com/fe-rid/uni_service', 
+        tech: ['Next.js', 'Vercel', 'Tailwind'],
+        github: 'https://github.com/fe-rid/uni_service',
         demo: 'https://campus-service.vercel.app/'
     },
     6: {
-        title: 'Study AI – AI-Powered Assistant',
-        description: 'Study AI is a professional AI-driven platform designed to help students learn and study more efficiently. With an intuitive, modern interface, it allows users to explore complex academic topics like Computer Science, Physics, and History using advanced AI tools.',
+        title: 'Study AI',
+        description: 'Advanced academic assistant powered by large language models. Helps students master complex subjects.',
         image: 'img/Study Ai.png',
-        technologies: ['Next.js', 'OpenAI API', 'TypeScript', 'TailwindCSS', 'Vercel Deployment'],
-        download: null,
-        github: 'https://github.com/fe-rid/study_AI', 
+        tech: ['Next.js', 'OpenAI API', 'TypeScript'],
+        github: 'https://github.com/fe-rid/study_AI',
         demo: 'https://study-ai-av21.vercel.app/'
-    }
-};
-
-/**
- * Opens project modal with project details
- */
-function initProjectModals() {
-    projectCards.forEach(card => {
-        const viewDetailsBtn = card.querySelector('.btn-view-details');
-        const cardElement = card;
-
-        // Add click event to "View Details" button
-        if (viewDetailsBtn) {
-            viewDetailsBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const projectId = cardElement.getAttribute('data-project');
-                openModal(projectId);
-            });
-        }
-
-        // Add click event to entire card (optional - opens modal on card click)
-        cardElement.addEventListener('click', (e) => {
-            // Don't open modal if clicking on links
-            if (!e.target.closest('.project-link')) {
-                const projectId = cardElement.getAttribute('data-project');
-                openModal(projectId);
-            }
-        });
-    });
-
-    // Close modal when clicking close button
-    if (modalClose) {
-        modalClose.addEventListener('click', closeModal);
-    }
-
-    // Close modal when clicking outside modal content
-    if (modal) {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-    }
-
-    // Close modal with Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-            closeModal();
-        }
-    });
-}
-
-/**
- * Opens the modal and displays project information
- * @param {string} projectId - The ID of the project to display
- */
-function openModal(projectId) {
-    const project = projectsData[projectId];
-
-    if (!project) return;
-
-    // Create modal content
-    modalBody.innerHTML = `
-        <h3>${project.title}</h3>
-        ${project.image ? `<div class="modal-project-image"><img src="${project.image}" alt="${project.title}"></div>` : ''}
-        <p>${project.description}</p>
-        <div class="project-tech">
-            ${project.technologies.map(tech => `<span>${tech}</span>`).join('')}
-        </div>
-        <div class="project-links" style="margin-top: 1.5rem;">
-            ${project.download ? `
-            <a href="${project.download}" class="project-link" download aria-label="Download App">
-                <i class="fas fa-download"></i>
-            </a>` : ''}
-            ${project.github ? `
-            <a href="${project.github}" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                <i class="fab fa-github"></i>
-            </a>` : ''}
-            ${project.demo ? `<a href="${project.demo}" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Live Demo">
-                <i class="fas fa-external-link-alt"></i>
-            </a>` : ''}
-        </div>
-    `;
-
-    // Show modal with animation
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
-}
-
-/**
- * Closes the modal
- */
-function closeModal() {
-    modal.classList.remove('active');
-    document.body.style.overflow = ''; // Restore scrolling
-}
-
-// ========================================
-// Certificate Modal
-// ========================================
-/**
- * Certificate data mapping
- */
-const certificateData = {
-    'udacity': {
+    },
+    'cert-1': {
+        title: 'Programming Fundamentals',
+        description: 'Completed comprehensive course on programming logic, data structures, and algorithmic thinking.',
         image: 'img/Programming Fundamentals.png',
-        title: 'Programming Fundamentals - Udacity'
+        tech: ['Java', 'CS Logic', 'Algorithms'],
+        link: '#'
     },
-    'flutter-track': {
+    'cert-2': {
+        title: 'Flutter Track Course',
+        description: 'Professional training in Flutter and Dart for cross-platform mobile application development.',
         image: 'img/Alferid Zeinu.png',
-        title: 'Flutter Track Course - NSDA'
+        tech: ['Flutter', 'Dart', 'Mobile UI'],
+        link: '#'
     },
-    'hackathon': {
+    'cert-3': {
+        title: 'Hackathon Winner',
+        description: 'Awarded for developing the most innovative and functional prototype within 48 hours.',
         image: 'img/nsda hackathon.png',
-        title: 'Hackathon Winner - NSDA'
+        tech: ['Problem Solving', 'Prototyping', 'Execution'],
+        link: '#'
     }
 };
 
-/**
- * Initializes certificate modal functionality
- */
-function initCertificateModals() {
-    const certificateModal = document.getElementById('certificate-modal');
-    const certificateModalClose = document.getElementById('certificate-modal-close');
-    const certificateModalBody = document.getElementById('certificate-modal-body');
-    const viewCertificateBtns = document.querySelectorAll('.btn-view-certificate');
+function initProjectModals() {
+    const listItems = document.querySelectorAll('.list-item');
+    const modal = document.getElementById('project-modal');
+    const modalBody = document.getElementById('modal-body');
+    const closeBtn = document.getElementById('modal-close');
 
-    if (!certificateModal || !certificateModalBody) return;
+    if (!modal || !modalBody) return;
 
-    // Add click event to all "View Full Size" buttons
-    viewCertificateBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const certId = btn.getAttribute('data-cert');
-            openCertificateModal(certId);
-        });
-    });
+    listItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const id = item.getAttribute('data-project');
+            const data = projectsData[id];
 
-    // Also open modal when clicking on certificate card
-    const certificateCards = document.querySelectorAll('.certificate-card');
-    certificateCards.forEach(card => {
-        card.addEventListener('click', (e) => {
-            if (!e.target.closest('.btn-view-certificate')) {
-                const btn = card.querySelector('.btn-view-certificate');
-                if (btn) {
-                    const certId = btn.getAttribute('data-cert');
-                    openCertificateModal(certId);
-                }
+            if (data) {
+                modalBody.innerHTML = `
+                    <div class="modal-project-header">
+                        <h2>${data.title}</h2>
+                        <div class="modal-tech-tags">
+                            ${data.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}
+                        </div>
+                    </div>
+                    <div class="modal-project-img">
+                        <img src="${data.image}" alt="${data.title}">
+                    </div>
+                    <div class="modal-project-desc">
+                        <p>${data.description}</p>
+                    </div>
+                    <div class="modal-project-footer">
+                        ${data.github ? `<a href="${data.github}" target="_blank" class="btn-minimal">GitHub Source <i class="fab fa-github"></i></a>` : ''}
+                        ${data.download ? `<a href="${data.download}" class="btn-minimal" download>See Option <i class="fas fa-external-link-alt"></i></a>` : ''}
+                        ${data.demo ? `<a href="${data.demo}" target="_blank" class="btn-minimal">Live Demo <i class="fas fa-external-link-alt"></i></a>` : ''}
+                    </div>
+                `;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
             }
         });
     });
 
-    // Close modal when clicking close button
-    if (certificateModalClose) {
-        certificateModalClose.addEventListener('click', () => {
-            closeCertificateModal();
-        });
-    }
+    const closeModal = () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    };
 
-    // Close modal when clicking outside modal content
-    certificateModal.addEventListener('click', (e) => {
-        if (e.target === certificateModal) {
-            closeCertificateModal();
-        }
-    });
-
-    // Close modal with Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && certificateModal.classList.contains('active')) {
-            closeCertificateModal();
-        }
-    });
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    window.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 }
 
-/**
- * Opens the certificate modal and displays the certificate image
- * @param {string} certId - The ID of the certificate to display
- */
-function openCertificateModal(certId) {
-    const certificateModal = document.getElementById('certificate-modal');
-    const certificateModalBody = document.getElementById('certificate-modal-body');
-    const certificate = certificateData[certId];
-
-    if (!certificate || !certificateModalBody) return;
-
-    // Create modal content with certificate image
-    certificateModalBody.innerHTML = `
-        <img src="${certificate.image}" alt="${certificate.title}" />
-    `;
-
-    // Show modal with animation
-    certificateModal.classList.add('active');
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+function initYear() {
+    const yearSpan = document.getElementById('current-year');
+    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 }
-
-/**
- * Closes the certificate modal
- */
-function closeCertificateModal() {
-    const certificateModal = document.getElementById('certificate-modal');
-    if (certificateModal) {
-        certificateModal.classList.remove('active');
-        document.body.style.overflow = ''; // Restore scrolling
-    }
-}
-
-// ========================================
-// Form Validation
-// ========================================
-/**
- * Initializes form validation with real-time error checking
- */
-function initFormValidation() {
-    if (!contactForm) return;
-
-    const nameInput = document.getElementById('name');
-    const emailInput = document.getElementById('email');
-    const messageInput = document.getElementById('message');
-    const nameError = document.getElementById('name-error');
-    const emailError = document.getElementById('email-error');
-    const messageError = document.getElementById('message-error');
-
-    // Real-time validation on input
-    if (nameInput) {
-        nameInput.addEventListener('blur', () => validateName());
-        nameInput.addEventListener('input', () => clearError(nameError));
-    }
-
-    if (emailInput) {
-        emailInput.addEventListener('blur', () => validateEmail());
-        emailInput.addEventListener('input', () => clearError(emailError));
-    }
-
-    if (messageInput) {
-        messageInput.addEventListener('blur', () => validateMessage());
-        messageInput.addEventListener('input', () => clearError(messageError));
-    }
-
-    // Form submission
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const isNameValid = validateName();
-        const isEmailValid = validateEmail();
-        const isMessageValid = validateMessage();
-
-        if (isNameValid && isEmailValid && isMessageValid) {
-            // Form is valid - you can add code here to submit the form
-            // For example: send data to a server, show success message, etc.
-
-            // Show success message (you can customize this)
-            alert('Thank you for your message! I will get back to you soon.');
-
-            // Reset form
-            contactForm.reset();
-
-            // Reset labels position
-            const labels = document.querySelectorAll('.form-label');
-            labels.forEach(label => {
-                const input = document.querySelector(`#${label.getAttribute('for')}`);
-                if (input && !input.value) {
-                    label.style.top = '18px';
-                    label.style.fontSize = '1rem';
-                    label.style.color = '';
-                    label.style.backgroundColor = '';
-                }
-            });
-        } else {
-            // Scroll to first error
-            const firstError = document.querySelector('.form-error:not(:empty)');
-            if (firstError) {
-                firstError.closest('.form-group').scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        }
-    });
-
-    /**
-     * Validates the name field
-     * @returns {boolean} True if valid, false otherwise
-     */
-    function validateName() {
-        const name = nameInput.value.trim();
-        if (!name) {
-            showError(nameError, 'Name is required');
-            return false;
-        }
-        if (name.length < 2) {
-            showError(nameError, 'Name must be at least 2 characters');
-            return false;
-        }
-        clearError(nameError);
-        return true;
-    }
-
-    /**
-     * Validates the email field
-     * @returns {boolean} True if valid, false otherwise
-     */
-    function validateEmail() {
-        const email = emailInput.value.trim();
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        if (!email) {
-            showError(emailError, 'Email is required');
-            return false;
-        }
-        if (!emailRegex.test(email)) {
-            showError(emailError, 'Please enter a valid email address');
-            return false;
-        }
-        clearError(emailError);
-        return true;
-    }
-
-    /**
-     * Validates the message field
-     * @returns {boolean} True if valid, false otherwise
-     */
-    function validateMessage() {
-        const message = messageInput.value.trim();
-        if (!message) {
-            showError(messageError, 'Message is required');
-            return false;
-        }
-        if (message.length < 10) {
-            showError(messageError, 'Message must be at least 10 characters');
-            return false;
-        }
-        clearError(messageError);
-        return true;
-    }
-
-    /**
-     * Displays an error message
-     * @param {HTMLElement} errorElement - The error element to show message in
-     * @param {string} message - The error message to display
-     */
-    function showError(errorElement, message) {
-        if (errorElement) {
-            errorElement.textContent = message;
-        }
-    }
-
-    /**
-     * Clears an error message
-     * @param {HTMLElement} errorElement - The error element to clear
-     */
-    function clearError(errorElement) {
-        if (errorElement) {
-            errorElement.textContent = '';
-        }
-    }
-}
-
-// ========================================
-// Additional Utility Functions
-// ========================================
-
-/**
- * Smooth scroll polyfill for older browsers (if needed)
- * Modern browsers support smooth scroll natively
- */
-function smoothScrollTo(element, offset = 0) {
-    const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-    window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-    });
-}
-

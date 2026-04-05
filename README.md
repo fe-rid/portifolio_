@@ -11,7 +11,7 @@ Welcome to my premium digital sandbox. I am Alferid, a Full Stack Developer with
 ## ✨ Features
 *   **Premium Aesthetic**: A futuristic "Dark Glass" UI built with advanced CSS glassmorphism, HSL color tokens, and smooth transitions.
 *   **High-Density Skills Grid**: Interactive technical stack display with brand-specific colorful icons and custom glow effects.
-*   **Project Showcases**: Detailed mobile application gallery with immersive modal popups for deep dives.
+*   **Work Showcases**: Detailed mobile application gallery with immersive modal popups for deep dives.
 *   **Fully Responsive**: Meticulously optimized for all screen sizes, from mobile devices to ultra-wide displays.
 *   **Contact Integration**: Direct bridges via Email, Phone, and Social platforms with interactive glass cards.
 

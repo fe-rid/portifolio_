@@ -340,7 +340,7 @@ body.dark-mode .btn-minimal.secondary:hover {
 }
 
 /* ========================================
-   Project List Section
+   Work List Section
    ======================================== */
 .projects-list {
   padding: var(--section-padding) 0;
@@ -412,7 +412,7 @@ body.dark-mode .btn-minimal.secondary:hover {
   transform: rotate(-45deg);
 }
 
-/* Dark Mode Project CTA Overrides */
+/* Dark Mode Work CTA Overrides */
 body.dark-mode .list-item-cta {
   border-color: #30363d;
   color: #58a6ff;
@@ -609,7 +609,7 @@ body.dark-mode .list-item:hover .list-item-cta {
 }
 
 /* ========================================
-   Project Modal - Minimalist
+   Work Modal - Minimalist
    ======================================== */
 .modal {
   position: fixed;
@@ -1396,7 +1396,7 @@ section {
 }
 
 /* ========================================
-   Projects Section Styles
+   Work Section Styles
    ======================================== */
 .projects-grid {
   display: grid;

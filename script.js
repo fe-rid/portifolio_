@@ -51,7 +51,7 @@ function initTheme() {
 
     themeToggle.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
-        
+
         // Save preference
         if (document.body.classList.contains('dark-mode')) {
             localStorage.setItem('portfolio-theme', 'dark');
@@ -106,7 +106,7 @@ function initScrollReveal() {
                 observer.unobserve(entry.target);
             }
         });
-    }, { 
+    }, {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     });
@@ -166,6 +166,22 @@ const projectsData = {
         github: 'https://github.com/fe-rid/study_AI',
         demo: 'https://study-ai-av21.vercel.app/'
     },
+    7: {
+        title: 'Hospital Queue System',
+        description: 'A comprehensive queue management system for hospitals to streamline patient flow.',
+        image: 'img/hospital-queue-system.png',
+        tech: ['Next.js', 'React', 'Tailwind'],
+        github: 'https://github.com/fe-rid/Hospital-Queue-System',
+        demo: 'https://hospital-queue-system-two.vercel.app/patient'
+    },
+    8: {
+        title: 'Car Showcase',
+        description: 'A modern and interactive car showcase platform with elegant design and animations.',
+        image: 'img/car-showcase.png',
+        tech: ['Next.js', 'React', 'Tailwind'],
+        github: 'https://github.com/fe-rid/car_showcase',
+        demo: 'https://car-showcase-sooty-tau.vercel.app/'
+    },
     'cert-1': {
         title: 'Programming Fundamentals',
         description: 'Completed comprehensive course on programming logic, data structures, and algorithmic thinking.',
@@ -218,7 +234,7 @@ function initProjectModals() {
                     </div>
                     <div class="modal-project-footer">
                         ${data.github ? `<a href="${data.github}" target="_blank" class="btn-minimal">GitHub Source <i class="fab fa-github"></i></a>` : ''}
-                        ${data.download ? `<a href="${data.download}" class="btn-minimal" download>See Option <i class="fas fa-external-link-alt"></i></a>` : ''}
+                        ${data.download ? `<a href="${data.download}" class="btn-minimal" download>Download <i class="fas fa-external-link-alt"></i></a>` : ''}
                         ${data.demo ? `<a href="${data.demo}" target="_blank" class="btn-minimal">Live Demo <i class="fas fa-external-link-alt"></i></a>` : ''}
                     </div>
                 `;

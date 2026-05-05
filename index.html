@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Alferid | Full Stack Developer & Digital Architect"
+      content="Alferid Zeinu | Full Stack Developer & Digital Architect — Building high-impact digital experiences."
     />
-    <title>Alferid | Full Stack Developer</title>
+    <title>Alferid — Full Stack Developer</title>
 
-    <!-- Google Fonts: Inter -->
+    <!-- Google Fonts: Kanit -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
 
@@ -28,395 +28,413 @@
   </head>
 
   <body>
-    <!-- Theme Toggle -->
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
-      <i class="fas fa-moon"></i>
-      <i class="fas fa-sun"></i>
-    </button>
+    <div class="main-wrapper" id="main-wrapper">
+      <!-- ============================
+           1. HERO SECTION
+           ============================ -->
+      <section class="hero-section" id="home">
+        <!-- Navbar -->
+        <nav class="hero-nav fade-in" data-delay="0" data-y="-20">
+          <a href="#about" class="nav-link">About</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#work" class="nav-link">Projects</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
 
-    <!-- Grainy Gradient Background -->
-    <div class="grainy-bg"></div>
+        <!-- Main Hero Content (Heading + Portrait) -->
+        <div class="hero-main-content">
+          <!-- Hero Heading -->
+          <div class="hero-heading-wrap fade-in" data-delay="0.15" data-y="40">
+            <h1 class="hero-heading">Hi, im Alferid</h1>
+          </div>
 
-    <!-- Header / Navbar -->
-    <header class="header" id="header">
-      <nav class="navbar container">
-        <!-- Logo -->
-        <div class="logo">
-          <a href="#home">Alferid</a>
-        </div>
-
-        <!-- Navigation Links -->
-        <ul class="nav-menu" id="nav-menu">
-          <li class="nav-item">
-            <a href="#home" class="nav-link">Home</a>
-          </li>
-          <li class="nav-item">
-            <a href="#about" class="nav-link">About</a>
-          </li>
-          <li class="nav-item">
-            <a href="#skills" class="nav-link">Skills</a>
-          </li>
-          <li class="nav-item">
-            <a href="#work" class="nav-link">Work</a>
-          </li>
-          <li class="nav-item">
-            <a href="#certificates" class="nav-link">Certificates</a>
-          </li>
-          <li class="nav-item">
-            <a href="#contact" class="nav-link">Contact</a>
-          </li>
-        </ul>
-
-        <!-- Hamburger Menu -->
-        <div class="hamburger" id="hamburger">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </div>
-      </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero reveal" id="home">
-      <div class="container">
-        <div class="hero-top-meta">
-          <div class="status-badge">
-            <span class="pulse"></span>
-            Available for new opportunities
+          <!-- Hero Portrait -->
+          <div class="hero-portrait fade-in" data-delay="0.6" data-y="30">
+            <div class="magnet-wrap" data-padding="150" data-strength="3">
+              <img
+                src="img/3D cartoon.png"
+                alt="Alferid Zeinu"
+                class="hero-portrait-img blend-portrait"
+              />
+            </div>
           </div>
         </div>
 
-        <div class="hero-content">
-          <h1 class="hero-title">
-            Alferid Zeinu
-          </h1>
-          <p class="hero-subtitle">
-            Full Stack Developer <span class="text-muted">&</span> Digital Architect.
+        <!-- Bottom Bar -->
+        <div class="hero-bottom">
+          <p class="hero-tagline fade-in" data-delay="0.35" data-y="20">
+            a full stack developer driven by crafting striking and unforgettable digital experiences
           </p>
-          <div class="hero-description">
-            I blend technical precision with creative design to build high-impact digital experiences. Currently crafting scalable solutions for web and mobile.
+          <div class="fade-in" data-delay="0.5" data-y="20">
+            <a href="#contact" class="contact-button">Contact Me</a>
           </div>
-          <div class="hero-btns">
-            <a href="#work" class="btn-minimal">
-              View Work <i class="fas fa-arrow-right"></i>
+        </div>
+      </section>
+
+      <!-- ============================
+           2. MARQUEE SECTION
+           ============================ -->
+      <section class="marquee-section" id="marquee">
+        <div class="marquee-row" id="marquee-row-1"></div>
+        <div class="marquee-row" id="marquee-row-2"></div>
+      </section>
+
+      <!-- ============================
+           3. ABOUT SECTION
+           ============================ -->
+      <section class="about-section" id="about">
+        <!-- Decorative 3D images -->
+        <img
+          src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png"
+          alt=""
+          class="about-decor about-decor-tl fade-in"
+          data-delay="0.1"
+          data-x="-80"
+          data-y="0"
+          data-duration="0.9"
+        />
+        <img
+          src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/p59_1.4659672e.png"
+          alt=""
+          class="about-decor about-decor-bl fade-in"
+          data-delay="0.25"
+          data-x="-80"
+          data-y="0"
+          data-duration="0.9"
+        />
+        <img
+          src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/lego_icon-1.703bb594.png"
+          alt=""
+          class="about-decor about-decor-tr fade-in"
+          data-delay="0.15"
+          data-x="80"
+          data-y="0"
+          data-duration="0.9"
+        />
+        <img
+          src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png"
+          alt=""
+          class="about-decor about-decor-br fade-in"
+          data-delay="0.3"
+          data-x="80"
+          data-y="0"
+          data-duration="0.9"
+        />
+
+        <div class="about-inner">
+          <h2 class="about-heading hero-heading fade-in" data-delay="0" data-y="40">About me</h2>
+          <p class="about-text animated-text" id="animated-text">
+            I am a dedicated Full Stack Developer with a passion for turning complex problems into elegant solutions. With a strong foundation in both web and mobile development, I enjoy every step of the development process, from conceptualization to deployment. Let&apos;s build something incredible together!
+          </p>
+          <a href="#contact" class="contact-button">Contact Me</a>
+        </div>
+      </section>
+
+      <!-- ============================
+           4. SERVICES / SKILLS SECTION
+           ============================ -->
+      <section class="services-section" id="skills">
+        <h2 class="services-heading fade-in" data-delay="0" data-y="40">Expertise</h2>
+        <div class="services-list">
+          <div class="service-item fade-in" data-delay="0">
+            <span class="service-number">01</span>
+            <div class="service-info">
+              <h3 class="service-name">Frontend Development</h3>
+              <p class="service-desc">Building responsive, high-performance web interfaces with React, Next.js, TypeScript, and modern CSS — crafted for exceptional user experience.</p>
+            </div>
+          </div>
+          <div class="service-item fade-in" data-delay="0.1">
+            <span class="service-number">02</span>
+            <div class="service-info">
+              <h3 class="service-name">Backend Development</h3>
+              <p class="service-desc">Architecting scalable server-side solutions with Node.js, Go, and PHP — building robust APIs and microservices for production-grade applications.</p>
+            </div>
+          </div>
+          <div class="service-item fade-in" data-delay="0.2">
+            <span class="service-number">03</span>
+            <div class="service-info">
+              <h3 class="service-name">Mobile Development</h3>
+              <p class="service-desc">Cross-platform mobile applications with Flutter and Kotlin — delivering native-like performance with beautiful, intuitive interfaces.</p>
+            </div>
+          </div>
+          <div class="service-item fade-in" data-delay="0.3">
+            <span class="service-number">04</span>
+            <div class="service-info">
+              <h3 class="service-name">Database & Cloud</h3>
+              <p class="service-desc">Managing data infrastructure with Firebase, Supabase, MongoDB, and MySQL — ensuring reliable, scalable, and secure data solutions.</p>
+            </div>
+          </div>
+          <div class="service-item fade-in" data-delay="0.4">
+            <span class="service-number">05</span>
+            <div class="service-info">
+              <h3 class="service-name">AI Integration</h3>
+              <p class="service-desc">Leveraging AI and large language models to build intelligent features — from academic assistants to smart automation tools.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================
+           5. PROJECTS SECTION
+           ============================ -->
+      <section class="projects-section" id="work">
+        <h2 class="projects-heading hero-heading fade-in" data-delay="0" data-y="40">Projects</h2>
+
+        <!-- Project Cards (Sticky Stacking) — All 8 projects -->
+        <div class="projects-cards">
+
+          <!-- Project 01 - Hospital Queue System -->
+          <div class="project-card-container" style="--card-index: 0; --total-cards: 8;">
+            <div class="project-card">
+              <div class="project-card-top">
+                <span class="project-card-number">01</span>
+                <span class="project-card-category">Web App</span>
+                <h3 class="project-card-name">Hospital Queue System</h3>
+                <a href="https://hospital-queue-system-two.vercel.app/patient" target="_blank" class="live-project-btn">Live Project</a>
+              </div>
+              <div class="project-card-images">
+                <div class="project-card-col-left">
+                  <div class="project-card-img project-card-img-sm">
+                    <img src="img/hospital-queue-system.png" alt="Hospital Queue System" loading="lazy" />
+                  </div>
+                  <div class="project-card-img project-card-img-md">
+                    <img src="img/hospital-queue-system.png" alt="Hospital Queue System" loading="lazy" />
+                  </div>
+                </div>
+                <div class="project-card-col-right">
+                  <div class="project-card-img project-card-img-lg">
+                    <img src="img/hospital-queue-system.png" alt="Hospital Queue System" loading="lazy" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 02 - Car Showcase -->
+          <div class="project-card-container" style="--card-index: 1; --total-cards: 8;">
+            <div class="project-card">
+              <div class="project-card-top">
+                <span class="project-card-number">02</span>
+                <span class="project-card-category">Web App</span>
+                <h3 class="project-card-name">Car Showcase</h3>
+                <a href="https://car-showcase-sooty-tau.vercel.app/" target="_blank" class="live-project-btn">Live Project</a>
+              </div>
+              <div class="project-card-images">
+                <div class="project-card-col-left">
+                  <div class="project-card-img project-card-img-sm">
+                    <img src="img/car-showcase.png" alt="Car Showcase" loading="lazy" />
+                  </div>
+                  <div class="project-card-img project-card-img-md">
+                    <img src="img/car-showcase.png" alt="Car Showcase" loading="lazy" />
+                  </div>
+                </div>
+                <div class="project-card-col-right">
+                  <div class="project-card-img project-card-img-lg">
+                    <img src="img/car-showcase.png" alt="Car Showcase" loading="lazy" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 03 - Campus Service -->
+          <div class="project-card-container" style="--card-index: 2; --total-cards: 8;">
+            <div class="project-card">
+              <div class="project-card-top">
+                <span class="project-card-number">03</span>
+                <span class="project-card-category">Web App</span>
+                <h3 class="project-card-name">Campus Service</h3>
+                <a href="https://campus-service.vercel.app/" target="_blank" class="live-project-btn">Live Project</a>
+              </div>
+              <div class="project-card-images">
+                <div class="project-card-col-left">
+                  <div class="project-card-img project-card-img-sm">
+                    <img src="img/campus service.png" alt="Campus Service" loading="lazy" />
+                  </div>
+                  <div class="project-card-img project-card-img-md">
+                    <img src="img/campus service.png" alt="Campus Service" loading="lazy" />
+                  </div>
+                </div>
+                <div class="project-card-col-right">
+                  <div class="project-card-img project-card-img-lg">
+                    <img src="img/campus service.png" alt="Campus Service" loading="lazy" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 04 - HandyConnect -->
+          <div class="project-card-container" style="--card-index: 3; --total-cards: 8;">
+            <div class="project-card">
+              <div class="project-card-top">
+                <span class="project-card-number">04</span>
+                <span class="project-card-category">Mobile</span>
+                <h3 class="project-card-name">HandyConnect</h3>
+                <a href="https://github.com/Abdurezakkemal/Handy_Connect/tree/main/handy_connect" target="_blank" class="live-project-btn">View on GitHub</a>
+              </div>
+              <div class="project-card-images">
+                <div class="project-card-col-left">
+                  <div class="project-card-img project-card-img-sm">
+                    <img src="img/handy connect.png" alt="HandyConnect" loading="lazy" />
+                  </div>
+                  <div class="project-card-img project-card-img-md">
+                    <img src="img/handy connect.png" alt="HandyConnect" loading="lazy" />
+                  </div>
+                </div>
+                <div class="project-card-col-right">
+                  <div class="project-card-img project-card-img-lg">
+                    <img src="img/handy connect.png" alt="HandyConnect" loading="lazy" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 05 - Expense Tracker -->
+          <div class="project-card-container" style="--card-index: 4; --total-cards: 8;">
+            <div class="project-card">
+              <div class="project-card-top">
+                <span class="project-card-number">05</span>
+                <span class="project-card-category">Mobile</span>
+                <h3 class="project-card-name">Expense Tracker</h3>
+                <a href="https://github.com/fe-rid/expenseTracker" target="_blank" class="live-project-btn">View on GitHub</a>
+              </div>
+              <div class="project-card-images">
+                <div class="project-card-col-left">
+                  <div class="project-card-img project-card-img-sm">
+                    <img src="img/home.png" alt="Expense Tracker" loading="lazy" />
+                  </div>
+                  <div class="project-card-img project-card-img-md">
+                    <img src="img/home.png" alt="Expense Tracker" loading="lazy" />
+                  </div>
+                </div>
+                <div class="project-card-col-right">
+                  <div class="project-card-img project-card-img-lg">
+                    <img src="img/home.png" alt="Expense Tracker" loading="lazy" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 06 - Uni Delivery -->
+          <div class="project-card-container" style="--card-index: 5; --total-cards: 8;">
+            <div class="project-card">
+              <div class="project-card-top">
+                <span class="project-card-number">06</span>
+                <span class="project-card-category">Mobile</span>
+                <h3 class="project-card-name">Uni Delivery</h3>
+                <a href="https://github.com/fe-rid/uniDeliveryApp" target="_blank" class="live-project-btn">View on GitHub</a>
+              </div>
+              <div class="project-card-images">
+                <div class="project-card-col-left">
+                  <div class="project-card-img project-card-img-sm">
+                    <img src="img/uni delivery.png" alt="Uni Delivery" loading="lazy" />
+                  </div>
+                  <div class="project-card-img project-card-img-md">
+                    <img src="img/uni delivery.png" alt="Uni Delivery" loading="lazy" />
+                  </div>
+                </div>
+                <div class="project-card-col-right">
+                  <div class="project-card-img project-card-img-lg">
+                    <img src="img/uni delivery.png" alt="Uni Delivery" loading="lazy" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 07 - Stay Manager -->
+          <div class="project-card-container" style="--card-index: 6; --total-cards: 8;">
+            <div class="project-card">
+              <div class="project-card-top">
+                <span class="project-card-number">07</span>
+                <span class="project-card-category">SaaS</span>
+                <h3 class="project-card-name">Stay Manager</h3>
+                <a href="https://github.com/fe-rid/hotel_management_saas" target="_blank" class="live-project-btn">View on GitHub</a>
+              </div>
+              <div class="project-card-images">
+                <div class="project-card-col-left">
+                  <div class="project-card-img project-card-img-sm">
+                    <img src="img/stay manager.png" alt="Stay Manager" loading="lazy" />
+                  </div>
+                  <div class="project-card-img project-card-img-md">
+                    <img src="img/stay manager.png" alt="Stay Manager" loading="lazy" />
+                  </div>
+                </div>
+                <div class="project-card-col-right">
+                  <div class="project-card-img project-card-img-lg">
+                    <img src="img/stay manager.png" alt="Stay Manager" loading="lazy" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 08 - Study AI -->
+          <div class="project-card-container" style="--card-index: 7; --total-cards: 8;">
+            <div class="project-card">
+              <div class="project-card-top">
+                <span class="project-card-number">08</span>
+                <span class="project-card-category">AI</span>
+                <h3 class="project-card-name">Study AI</h3>
+                <a href="https://study-ai-av21.vercel.app/" target="_blank" class="live-project-btn">Live Project</a>
+              </div>
+              <div class="project-card-images">
+                <div class="project-card-col-left">
+                  <div class="project-card-img project-card-img-sm">
+                    <img src="img/Study Ai.png" alt="Study AI" loading="lazy" />
+                  </div>
+                  <div class="project-card-img project-card-img-md">
+                    <img src="img/Study Ai.png" alt="Study AI" loading="lazy" />
+                  </div>
+                </div>
+                <div class="project-card-col-right">
+                  <div class="project-card-img project-card-img-lg">
+                    <img src="img/Study Ai.png" alt="Study AI" loading="lazy" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ============================
+           6. CONTACT SECTION
+           ============================ -->
+      <section class="contact-section" id="contact">
+        <div class="contact-inner">
+          <h2 class="contact-heading hero-heading fade-in" data-delay="0" data-y="40">Let&apos;s Connect</h2>
+          <p class="contact-sub fade-in" data-delay="0.1" data-y="20">Ready to build something great? Get in touch.</p>
+          <div class="contact-links fade-in" data-delay="0.2" data-y="20">
+            <a href="mailto:feridzeynu@gmail.com" class="contact-link-item">
+              <i class="fas fa-envelope"></i>
+              feridzeynu@gmail.com
             </a>
-            <a href="resume/Alferid_Zeinu_CV.pdf" class="btn-minimal secondary" target="_blank">
-              Resume <i class="fas fa-file-alt"></i>
+            <a href="https://www.linkedin.com/in/alferid-zeynu-7a039330b/" target="_blank" class="contact-link-item">
+              <i class="fab fa-linkedin"></i>
+              LinkedIn
             </a>
-            <a href="#contact" class="btn-minimal secondary">
-              Get in touch
+            <a href="https://github.com/fe-rid/" target="_blank" class="contact-link-item">
+              <i class="fab fa-github"></i>
+              GitHub
+            </a>
+            <a href="https://t.me/ferid_zu" target="_blank" class="contact-link-item">
+              <i class="fab fa-telegram"></i>
+              Telegram
             </a>
           </div>
+          <a href="mailto:feridzeynu@gmail.com" class="contact-button fade-in" data-delay="0.3" data-y="20">Contact Me</a>
         </div>
-      </div>
-    </section>
-
-
-
-    <!-- About Me Section -->
-    <section class="about reveal" id="about">
-      <div class="container">
-        <div class="about-content">
-          <div class="about-text">
-            <h2>Building digital experiences with purpose and precision.</h2>
-            <div class="about-description">
-              <p>
-                I am a dedicated Full Stack Developer with a passion for turning complex problems into elegant solutions. With a strong foundation in both web and mobile development, I enjoy every step of the development process, from conceptualization to deployment.
-              </p>
-              <br>
-              <p>
-                My goal is to build software that not only functions perfectly but also provides an exceptional user experience. I am constantly learning and evolving, always ready to embrace new technologies and challenges.
-              </p>
-            </div>
-          </div>
-          <div class="about-image">
-            <img src="img/profile_photo.jpg" alt="Alferid Zeinu">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Expertise / Skills Section -->
-    <section class="skills-section reveal" id="skills">
-      <div class="container">
-        <div class="list-header">
-          <h2 class="list-title">Expertise</h2>
-        </div>
-        <div class="skills-grid-showcase">
-          <!-- Row 1 -->
-          <div class="skill-card reveal">
-            <i class="fab fa-js skill-icon color-js"></i>
-            <span>JavaScript</span>
-          </div>
-          <div class="skill-card reveal">
-            <i class="fas fa-code skill-icon color-ts"></i>
-            <span>TypeScript</span>
-          </div>
-          <div class="skill-card reveal">
-            <i class="fab fa-react skill-icon color-react"></i>
-            <span>React</span>
-          </div>
-          <div class="skill-card reveal">
-            <i class="fab fa-node-js skill-icon color-node"></i>
-            <span>Node.js</span>
-          </div>
-          <div class="skill-card reveal">
-            <i class="fas fa-layer-group skill-icon color-next"></i>
-            <span>Next.js</span>
-          </div>
-          <div class="skill-card reveal">
-            <i class="fas fa-mobile-alt skill-icon color-flutter"></i>
-            <span>Flutter</span>
-          </div>
-
-          <!-- Row 2 -->
-          <div class="skill-card reveal">
-            <i class="fas fa-fire skill-icon color-firebase"></i>
-            <span>Firebase</span>
-          </div>
-          <div class="skill-card reveal">
-            <i class="fas fa-bolt skill-icon color-supabase"></i>
-            <span>Supabase</span>
-          </div>
-          <div class="skill-card reveal">
-            <i class="fab fa-java skill-icon color-java"></i>
-            <span>Java</span>
-          </div>
-          <div class="skill-card reveal">
-            <i class="fab fa-android skill-icon color-kotlin"></i>
-            <span>Kotlin</span>
-          </div>
-          <div class="skill-card reveal">
-            <i class="fas fa-terminal skill-icon color-go"></i>
-            <span>Go</span>
-          </div>
-          <div class="skill-card reveal">
-            <i class="fas fa-leaf skill-icon color-mongo"></i>
-            <span>MongoDB</span>
-          </div>
-
-          <!-- Row 3 -->
-          <div class="skill-card reveal">
-            <i class="fab fa-php skill-icon color-php"></i>
-            <span>PHP</span>
-          </div>
-          <div class="skill-card reveal">
-            <i class="fas fa-desktop skill-icon color-cpp"></i>
-            <span>C++</span>
-          </div>
-          <div class="skill-card reveal">
-            <i class="fas fa-database skill-icon color-mysql"></i>
-            <span>MySQL</span>
-          </div>
-          <div class="skill-card reveal">
-            <i class="fab fa-github skill-icon color-github"></i>
-            <span>GitHub</span>
-          </div>
-          <div class="skill-card reveal">
-            <i class="fas fa-video skill-icon color-video"></i>
-            <span>Video Editing</span>
-          </div>
-          <div class="skill-card reveal">
-            <i class="fab fa-git-alt skill-icon color-git"></i>
-            <span>Git</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Work Section -->
-    <section class="projects-list reveal" id="work">
-      <div class="container">
-        <div class="list-header">
-          <h2 class="list-title">Selected Work</h2>
-        </div>
-        
-        <div class="project-list-items">
-          <!-- Hospital Queue System -->
-          <div class="list-item" data-project="7">
-            <div class="list-item-meta">2026 / Web</div>
-            <div class="list-item-title">
-              <h3>Hospital Queue System</h3>
-              <p>Medical facility queue management</p>
-            </div>
-            <div class="list-item-cta">
-              <i class="fas fa-arrow-right"></i>
-            </div>
-          </div>
-
-          <!-- Car Showcase -->
-          <div class="list-item" data-project="8">
-            <div class="list-item-meta">2026 / Web</div>
-            <div class="list-item-title">
-              <h3>Car Showcase</h3>
-              <p>Premium automotive display platform</p>
-            </div>
-            <div class="list-item-cta">
-              <i class="fas fa-arrow-right"></i>
-            </div>
-          </div>
-
-          <!-- HandyConnect -->
-          <div class="list-item" data-project="1">
-            <div class="list-item-meta">2024 / Mobile</div>
-            <div class="list-item-title">
-              <h3>HandyConnect</h3>
-              <p>Service provider discovery platform</p>
-            </div>
-            <div class="list-item-cta">
-              <i class="fas fa-arrow-right"></i>
-            </div>
-          </div>
-
-          <!-- Expense Tracker -->
-          <div class="list-item" data-project="2">
-            <div class="list-item-meta">2024 / Mobile</div>
-            <div class="list-item-title">
-              <h3>Expense Tracker</h3>
-              <p>Personal finance management</p>
-            </div>
-            <div class="list-item-cta">
-              <i class="fas fa-arrow-right"></i>
-            </div>
-          </div>
-
-          <!-- University Delivery -->
-          <div class="list-item" data-project="3">
-            <div class="list-item-meta">2024 / Mobile</div>
-            <div class="list-item-title">
-              <h3>Uni Delivery</h3>
-              <p>Campus-based delivery ecosystem</p>
-            </div>
-            <div class="list-item-cta">
-              <i class="fas fa-arrow-right"></i>
-            </div>
-          </div>
-
-          <!-- Stay Manager -->
-          <div class="list-item" data-project="4">
-            <div class="list-item-meta">2025 / SaaS</div>
-            <div class="list-item-title">
-              <h3>Stay Manager</h3>
-              <p>Hotel & booking management system</p>
-            </div>
-            <div class="list-item-cta">
-              <i class="fas fa-arrow-right"></i>
-            </div>
-          </div>
-
-          <!-- Campus Service -->
-          <div class="list-item" data-project="5">
-            <div class="list-item-meta">2025 / Web</div>
-            <div class="list-item-title">
-              <h3>Campus Service</h3>
-              <p>Centralized student resource hub</p>
-            </div>
-            <div class="list-item-cta">
-              <i class="fas fa-arrow-right"></i>
-            </div>
-          </div>
-
-          <!-- Study AI -->
-          <div class="list-item" data-project="6">
-            <div class="list-item-meta">2025 / AI</div>
-            <div class="list-item-title">
-              <h3>Study AI</h3>
-              <p>AI-powered academic assistant</p>
-            </div>
-            <div class="list-item-cta">
-              <i class="fas fa-arrow-right"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-
-    <!-- Recognition Section -->
-    <section class="works-grid reveal" id="certificates">
-      <div class="container">
-        <div class="expertise-item">
-          <h2 class="list-title">Recognition</h2>
-        </div>
-        
-        <div class="project-list-items">
-          <div class="list-item" data-project="cert-1">
-            <div class="list-item-meta">2025 / Udacity</div>
-            <div class="list-item-title">
-              <h3>Programming Fundamentals</h3>
-              <p>Foundational computer science & logic</p>
-            </div>
-            <div class="list-item-cta">
-              <i class="fas fa-arrow-right"></i>
-            </div>
-          </div>
-          
-          <div class="list-item" data-project="cert-2">
-            <div class="list-item-meta">2025 / NSDA</div>
-            <div class="list-item-title">
-              <h3>Flutter Track Course</h3>
-              <p>Professional cross-platform mobile development</p>
-            </div>
-            <div class="list-item-cta">
-              <i class="fas fa-arrow-right"></i>
-            </div>
-          </div>
-
-          <div class="list-item" data-project="cert-3">
-            <div class="list-item-meta">2025 / NSDA</div>
-            <div class="list-item-title">
-              <h3>Hackathon Winner</h3>
-              <p>First place in rapid application prototyping</p>
-            </div>
-            <div class="list-item-cta">
-              <i class="fas fa-arrow-right"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Project/Certificate Modal -->
-    <div class="modal" id="project-modal">
-      <div class="modal-content">
-        <span class="modal-close" id="modal-close">&times;</span>
-        <div class="modal-body" id="modal-body">
-          <!-- Content injected via JS -->
-        </div>
-      </div>
-    </div>
-
-    <!-- Contact Section -->
-    <section class="contact reveal" id="contact">
-      <div class="container">
-        <h2 class="contact-title">Let's build something great together.</h2>
-        <div class="contact-links">
-          <a href="mailto:feridzeynu@gmail.com" class="contact-link">
-            feridzeynu@gmail.com <i class="fas fa-arrow-up-right-from-square"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/alferid-zeynu-7a039330b/" target="_blank" class="contact-link">
-            LinkedIn <i class="fas fa-arrow-up-right-from-square"></i>
-          </a>
-          <a href="https://github.com/fe-rid/" target="_blank" class="contact-link">
-            GitHub <i class="fas fa-arrow-up-right-from-square"></i>
-          </a>
-          <a href="https://t.me/ferid_zu" target="_blank" class="contact-link">
-            Telegram <i class="fas fa-arrow-up-right-from-square"></i>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
+        <footer class="footer">
           <p>&copy; <span id="current-year"></span> Alferid Zeinu. All rights reserved.</p>
           <p>Built with precision and passion.</p>
-        </div>
-      </div>
-    </footer>
+        </footer>
+      </section>
+    </div>
 
     <!-- Custom JavaScript -->
     <script src="script.js"></script>

@@ -173,25 +173,40 @@ function initAnimatedText() {
     const text = textEl.textContent.trim();
     textEl.textContent = '';
 
+    const wordsAndSpaces = text.match(/\S+|\s+/g) || [];
     const chars = [];
+    let index = 0;
 
-    text.split('').forEach((char, i) => {
-        const wrap = document.createElement('span');
-        wrap.className = 'char-wrap';
+    wordsAndSpaces.forEach((token) => {
+        if (/^\s+$/.test(token)) {
+            textEl.appendChild(document.createTextNode(token));
+            return;
+        }
 
-        const placeholder = document.createElement('span');
-        placeholder.className = 'char-placeholder';
-        placeholder.textContent = char === ' ' ? '\u00A0' : char;
+        const wordWrap = document.createElement('span');
+        wordWrap.className = 'word-wrap';
 
-        const animated = document.createElement('span');
-        animated.className = 'char-animated';
-        animated.textContent = char === ' ' ? '\u00A0' : char;
+        token.split('').forEach((char) => {
+            const wrap = document.createElement('span');
+            wrap.className = 'char-wrap';
 
-        wrap.appendChild(placeholder);
-        wrap.appendChild(animated);
-        textEl.appendChild(wrap);
+            const placeholder = document.createElement('span');
+            placeholder.className = 'char-placeholder';
+            placeholder.textContent = char;
 
-        chars.push({ el: animated, index: i });
+            const animated = document.createElement('span');
+            animated.className = 'char-animated';
+            animated.textContent = char;
+
+            wrap.appendChild(placeholder);
+            wrap.appendChild(animated);
+            wordWrap.appendChild(wrap);
+
+            chars.push({ el: animated, index });
+            index += 1;
+        });
+
+        textEl.appendChild(wordWrap);
     });
 
     const totalChars = chars.length;
